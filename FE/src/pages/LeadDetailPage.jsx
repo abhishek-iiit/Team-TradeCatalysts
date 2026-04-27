@@ -13,26 +13,29 @@ import GenerateDraftButton from '../components/leads/GenerateDraftButton'
 import MeetingsTab from '../components/leads/MeetingsTab'
 import CloseDealModal from '../components/leads/CloseDealModal'
 import FlowVisualization from '../components/leads/FlowVisualization'
+import TradeReportTab from '../components/leads/TradeReportTab'
 
 const STAGES = [
-  { value: 'discovered',       label: 'Discovered' },
-  { value: 'intro_sent',       label: 'Intro Sent' },
-  { value: 'pricing_sent',     label: 'Pricing Sent' },
-  { value: 'pricing_followup', label: 'Pricing Follow-Up' },
-  { value: 'meeting_set',      label: 'Meeting Set' },
-  { value: 'closed_won',       label: 'Closed Won' },
-  { value: 'closed_lost',      label: 'Closed Lost' },
+  { value: 'discovered',         label: 'Discovered' },
+  { value: 'intro_sent',         label: 'Intro Sent' },
+  { value: 'documents_sent',     label: 'Documents Sent' },
+  { value: 'requirements_asked', label: 'Requirements Asked' },
+  { value: 'pricing_sent',       label: 'Pricing Sent' },
+  { value: 'pricing_followup',   label: 'Pricing Follow-Up' },
+  { value: 'meeting_sent',       label: 'Meeting Sent' },
+  { value: 'deal_sent',          label: 'Deal Sent' },
+  { value: 'closed_won',         label: 'Closed Won' },
+  { value: 'closed_lost',        label: 'Closed Lost' },
 ]
 
-const TABS = ['Timeline', 'Call Log', 'Emails', 'Meetings', 'Flow']
-
+const DETAIL_TABS = ['Call Log', 'Emails', 'Meetings', 'Trade Report', 'Flow']
 const CLOSED_STAGES = ['closed_won', 'closed_lost']
 
 export default function LeadDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const qc = useQueryClient()
-  const [activeTab, setActiveTab] = useState('Timeline')
+  const [activeTab, setActiveTab] = useState('Trade Report')
   const [showCloseDeal, setShowCloseDeal] = useState(false)
 
   const { data: lead, isLoading, isError } = useQuery({
@@ -59,7 +62,7 @@ export default function LeadDetailPage() {
   }
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
+    <div className="p-6 max-w-screen-2xl mx-auto">
       {/* Breadcrumb */}
       <button
         onClick={() => navigate(-1)}
@@ -89,7 +92,7 @@ export default function LeadDetailPage() {
             )}
           </p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-3 flex-wrap justify-end">
           {!CLOSED_STAGES.includes(lead.stage) && (
             <button
               onClick={() => setShowCloseDeal(true)}
@@ -99,13 +102,11 @@ export default function LeadDetailPage() {
             </button>
           )}
           {CLOSED_STAGES.includes(lead.stage) && (
-            <span
-              className={`text-xs font-semibold px-3 py-1.5 rounded-lg border ${
-                lead.stage === 'closed_won'
-                  ? 'bg-green-50 border-green-200 text-green-700'
-                  : 'bg-red-50 border-red-200 text-red-600'
-              }`}
-            >
+            <span className={`text-xs font-semibold px-3 py-1.5 rounded-lg border ${
+              lead.stage === 'closed_won'
+                ? 'bg-green-50 border-green-200 text-green-700'
+                : 'bg-red-50 border-red-200 text-red-600'
+            }`}>
               {lead.stage === 'closed_won' ? 'Won' : 'Lost'}
             </span>
           )}
@@ -121,7 +122,6 @@ export default function LeadDetailPage() {
               <option key={s.value} value={s.value}>{s.label}</option>
             ))}
           </select>
-
           <button
             onClick={togglePause}
             disabled={patchMutation.isPending}
@@ -137,55 +137,69 @@ export default function LeadDetailPage() {
       </div>
 
       {/* Progress Bar */}
-      <div className="my-6">
+      <div className="my-5">
         <StageProgressBar stage={lead.stage} />
       </div>
 
-      {/* Main layout: content + sidebar */}
-      <div className="flex gap-6 mt-4">
-        {/* Left: tabs */}
-        <div className="flex-1 min-w-0">
-          <div className="flex gap-1 border-b border-gray-200 mb-4">
-            {TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 text-sm font-medium transition-colors border-b-2 -mb-px ${
-                  activeTab === tab
-                    ? 'border-indigo-500 text-indigo-600'
-                    : 'border-transparent text-gray-500 hover:text-gray-700'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
+      {/* Two-column main layout */}
+      <div className="flex gap-5 mt-2 items-start">
+
+        {/* ── Left column: Timeline + Contacts ── */}
+        <div className="w-72 shrink-0 space-y-4">
+          {/* Timeline */}
+          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-semibold text-gray-700">Timeline</h2>
+            </div>
+            <div className="p-4 max-h-[420px] overflow-y-auto">
+              <TimelineTab actions={lead.actions || []} />
+            </div>
           </div>
 
-          {activeTab === 'Timeline' && (
-            <TimelineTab actions={lead.actions || []} />
-          )}
-          {activeTab === 'Call Log' && (
-            <CallLogTab leadId={id} />
-          )}
-          {activeTab === 'Emails' && (
-            <EmailThreadsTab leadId={id} />
-          )}
-          {activeTab === 'Meetings' && (
-            <MeetingsTab lead={lead} />
-          )}
-          {activeTab === 'Flow' && (
-            <FlowVisualization leadId={id} />
-          )}
+          {/* Contacts */}
+          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+            <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
+              <h2 className="text-sm font-semibold text-gray-700">Contacts</h2>
+            </div>
+            <div className="p-3 space-y-2">
+              {lead.contacts && lead.contacts.length > 0 ? (
+                lead.contacts.map((c) => <ContactCard key={c.id} contact={c} />)
+              ) : (
+                <p className="text-xs text-gray-400 py-2 text-center">No contacts yet.</p>
+              )}
+            </div>
+          </div>
         </div>
 
-        {/* Right: contacts sidebar */}
-        <div className="w-72 shrink-0 space-y-3">
-          <h2 className="text-sm font-semibold text-gray-700">Contacts</h2>
-          {lead.contacts && lead.contacts.length > 0 ? (
-            lead.contacts.map((c) => <ContactCard key={c.id} contact={c} />)
-          ) : (
-            <p className="text-xs text-gray-400">No contacts yet.</p>
-          )}
+        {/* ── Right column: Detail tabs ── */}
+        <div className="flex-1 min-w-0">
+          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+            {/* Tab bar */}
+            <div className="flex border-b border-gray-200 bg-gray-50 px-2 pt-2 gap-1">
+              {DETAIL_TABS.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-2 text-sm font-medium rounded-t-lg transition-colors border-b-2 -mb-px ${
+                    activeTab === tab
+                      ? 'border-indigo-500 text-indigo-600 bg-white'
+                      : 'border-transparent text-gray-500 hover:text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+
+            {/* Tab content */}
+            <div className="p-4 min-h-[480px]">
+              {activeTab === 'Call Log' && <CallLogTab leadId={id} />}
+              {activeTab === 'Emails' && <EmailThreadsTab leadId={id} />}
+              {activeTab === 'Meetings' && <MeetingsTab lead={lead} />}
+              {activeTab === 'Trade Report' && <TradeReportTab lead={lead} />}
+              {activeTab === 'Flow' && <FlowVisualization leadId={id} />}
+            </div>
+          </div>
         </div>
       </div>
 

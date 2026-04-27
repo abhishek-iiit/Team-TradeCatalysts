@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Campaign
+from .models import Product, Campaign, ProductStageConfig
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -23,6 +23,21 @@ class ProductSerializer(serializers.ModelSerializer):
         return super().create(validated_data)
 
 
+class ProductStageConfigSerializer(serializers.ModelSerializer):
+    has_document = serializers.SerializerMethodField()
+
+    class Meta:
+        model = ProductStageConfig
+        fields = [
+            'id', 'product', 'stage', 'subject_line', 'email_content',
+            'document', 'has_document', 'trigger_days', 'created_at', 'updated_at',
+        ]
+        read_only_fields = ['id', 'has_document', 'created_at', 'updated_at']
+
+    def get_has_document(self, obj):
+        return bool(obj.document and obj.document.name)
+
+
 class CampaignSerializer(serializers.ModelSerializer):
     product_ids = serializers.ListField(
         child=serializers.UUIDField(), write_only=True, required=True
@@ -35,7 +50,7 @@ class CampaignSerializer(serializers.ModelSerializer):
         model = Campaign
         fields = [
             'id', 'title', 'product_ids', 'products', 'country_filters',
-            'num_transactions_yr', 'status', 'lead_count',
+            'num_transactions_yr', 'data_year', 'status', 'lead_count',
             'created_by_email', 'created_at', 'updated_at',
         ]
         read_only_fields = ['id', 'status', 'lead_count', 'created_by_email', 'created_at', 'updated_at']

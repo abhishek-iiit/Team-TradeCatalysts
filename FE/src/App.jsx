@@ -9,6 +9,8 @@ import CampaignLeadsPage from './pages/CampaignLeadsPage'
 import LeadDetailPage from './pages/LeadDetailPage'
 import ProductsPage from './pages/ProductsPage'
 import AIDraftsPage from './pages/AIDraftsPage'
+import InboxPage from './pages/InboxPage'
+import SettingsPage from './pages/SettingsPage'
 
 function AppLayout() {
   return (
@@ -24,6 +26,8 @@ function AppLayout() {
           <Route path="leads/:id" element={<LeadDetailPage />} />
           <Route path="products" element={<ProductsPage />} />
           <Route path="ai-drafts" element={<AIDraftsPage />} />
+          <Route path="inbox" element={<InboxPage />} />
+          <Route path="settings" element={<SettingsPage />} />
         </Routes>
       </main>
     </div>

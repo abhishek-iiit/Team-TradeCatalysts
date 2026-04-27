@@ -1,0 +1,3964 @@
+{
+  "acetic acid": [
+    {
+      "company_name": "Nippon Synthetic Chemical Industry",
+      "country": "JP",
+      "website": "https://www.nippon-gohsei.co.jp",
+      "contact_name": "Hiroshi Tanaka",
+      "contact_designation": "Senior Purchase Manager",
+      "contact_email": "h.tanaka@nippon-gohsei.co.jp",
+      "num_transactions": 48,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 100,
+          "price_usd_per_mt": 590
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 110,
+          "price_usd_per_mt": 600
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 105,
+          "price_usd_per_mt": 605
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 115,
+          "price_usd_per_mt": 610
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 120,
+          "price_usd_per_mt": 618
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 118,
+          "price_usd_per_mt": 622
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 120,
+          "price_usd_per_mt": 622
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 135,
+          "price_usd_per_mt": 615
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 110,
+          "price_usd_per_mt": 630
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 622,
+        "yoy_change_pct": 1.2
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 100,
+          "value_usd": 59000,
+          "unit_price": 590
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 110,
+          "value_usd": 66000,
+          "unit_price": 600
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 105,
+          "value_usd": 63525,
+          "unit_price": 605
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 115,
+          "value_usd": 70150,
+          "unit_price": 610
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 120,
+          "value_usd": 74160,
+          "unit_price": 618
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 118,
+          "value_usd": 73396,
+          "unit_price": 622
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 120,
+          "value_usd": 74640,
+          "unit_price": 622
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 135,
+          "value_usd": 83025,
+          "unit_price": 615
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 110,
+          "value_usd": 69300,
+          "unit_price": 630
+        }
+      ]
+    },
+    {
+      "company_name": "Hanwha Solutions Corp",
+      "country": "KR",
+      "website": "https://www.hanwhasolutions.com",
+      "contact_name": "Ji-Woo Kim",
+      "contact_designation": "Procurement Lead",
+      "contact_email": "jiwoo.kim@hanwhasolutions.com",
+      "num_transactions": 36,
+      "purchase_history": [
+        {
+          "month": "2024-01",
+          "volume_mt": 190,
+          "price_usd_per_mt": 605
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 195,
+          "price_usd_per_mt": 610
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 188,
+          "price_usd_per_mt": 612
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 200,
+          "price_usd_per_mt": 618
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 185,
+          "price_usd_per_mt": 612
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 210,
+          "price_usd_per_mt": 625
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 618,
+        "yoy_change_pct": 2.8
+      },
+      "trade_records": [
+        {
+          "date": "2024-01-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 190,
+          "value_usd": 114950,
+          "unit_price": 605
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "KR",
+          "destination_port": "Incheon",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 195,
+          "value_usd": 118950,
+          "unit_price": 610
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 188,
+          "value_usd": 115056,
+          "unit_price": 612
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "KR",
+          "destination_port": "Incheon",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 200,
+          "value_usd": 123600,
+          "unit_price": 618
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 185,
+          "value_usd": 113220,
+          "unit_price": 612
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "KR",
+          "destination_port": "Incheon",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 210,
+          "value_usd": 131250,
+          "unit_price": 625
+        }
+      ]
+    },
+    {
+      "company_name": "Celanese Singapore Pte Ltd",
+      "country": "SG",
+      "website": "https://www.celanese.com",
+      "contact_name": "Mei Lin Chua",
+      "contact_designation": "Head of Raw Materials",
+      "contact_email": "meilin.chua@celanese.com",
+      "num_transactions": 60,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 460,
+          "price_usd_per_mt": 595
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 470,
+          "price_usd_per_mt": 598
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 455,
+          "price_usd_per_mt": 600
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 490,
+          "price_usd_per_mt": 605
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 495,
+          "price_usd_per_mt": 608
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 480,
+          "price_usd_per_mt": 610
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 500,
+          "price_usd_per_mt": 610
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 480,
+          "price_usd_per_mt": 608
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 520,
+          "price_usd_per_mt": 615
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 611,
+        "yoy_change_pct": -0.5
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 460,
+          "value_usd": 273700,
+          "unit_price": 595
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 470,
+          "value_usd": 281060,
+          "unit_price": 598
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 455,
+          "value_usd": 273000,
+          "unit_price": 600
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 490,
+          "value_usd": 296450,
+          "unit_price": 605
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 495,
+          "value_usd": 300960,
+          "unit_price": 608
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 480,
+          "value_usd": 292800,
+          "unit_price": 610
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 500,
+          "value_usd": 305000,
+          "unit_price": 610
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 480,
+          "value_usd": 291840,
+          "unit_price": 608
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "SG",
+          "destination_port": "Singapore",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 520,
+          "value_usd": 319800,
+          "unit_price": 615
+        }
+      ]
+    },
+    {
+      "company_name": "Reliance Industries Ltd",
+      "country": "IN",
+      "website": "https://www.ril.com",
+      "contact_name": "Vikram Mehta",
+      "contact_designation": "Chemicals Procurement Manager",
+      "contact_email": "vikram.mehta@ril.com",
+      "num_transactions": 72,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 700,
+          "price_usd_per_mt": 588
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 720,
+          "price_usd_per_mt": 592
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 710,
+          "price_usd_per_mt": 595
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 760,
+          "price_usd_per_mt": 598
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 770,
+          "price_usd_per_mt": 601
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 755,
+          "price_usd_per_mt": 603
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 800,
+          "price_usd_per_mt": 605
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 750,
+          "price_usd_per_mt": 600
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 820,
+          "price_usd_per_mt": 608
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 604,
+        "yoy_change_pct": -1.2
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 700,
+          "value_usd": 411600,
+          "unit_price": 588
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 720,
+          "value_usd": 426240,
+          "unit_price": 592
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 710,
+          "value_usd": 422450,
+          "unit_price": 595
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 760,
+          "value_usd": 454480,
+          "unit_price": 598
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 770,
+          "value_usd": 462770,
+          "unit_price": 601
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 755,
+          "value_usd": 455265,
+          "unit_price": 603
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 800,
+          "value_usd": 484000,
+          "unit_price": 605
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 750,
+          "value_usd": 450000,
+          "unit_price": 600
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 820,
+          "value_usd": 498560,
+          "unit_price": 608
+        }
+      ]
+    },
+    {
+      "company_name": "BASF SE",
+      "country": "DE",
+      "website": "https://www.basf.com",
+      "contact_name": "Stefan Hoffmann",
+      "contact_designation": "Global Chemical Procurement Manager",
+      "contact_email": "stefan.hoffmann@basf.com",
+      "contact_phone": "+49-621-60-43000",
+      "num_transactions": 90,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 400,
+          "price_usd_per_mt": 592
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 420,
+          "price_usd_per_mt": 598
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 440,
+          "price_usd_per_mt": 608
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 450,
+          "price_usd_per_mt": 612
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 460,
+          "price_usd_per_mt": 618
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 445,
+          "price_usd_per_mt": 614
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 470,
+          "price_usd_per_mt": 622
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 612,
+        "yoy_change_pct": 3.1
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 400,
+          "value_usd": 236800,
+          "unit_price": 592
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "DE",
+          "destination_port": "Bremen",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 420,
+          "value_usd": 251160,
+          "unit_price": 598
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 440,
+          "value_usd": 267520,
+          "unit_price": 608
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "DE",
+          "destination_port": "Bremen",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 450,
+          "value_usd": 275400,
+          "unit_price": 612
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 460,
+          "value_usd": 284280,
+          "unit_price": 618
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "DE",
+          "destination_port": "Bremen",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 445,
+          "value_usd": 273230,
+          "unit_price": 614
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 470,
+          "value_usd": 292340,
+          "unit_price": 622
+        }
+      ]
+    },
+    {
+      "company_name": "Mitsui Chemicals Inc",
+      "country": "JP",
+      "website": "https://www.mitsuichem.com",
+      "contact_name": "Kenji Yamamoto",
+      "contact_designation": "Raw Material Sourcing Director",
+      "contact_email": null,
+      "contact_phone": "+81-3-6757-3200",
+      "num_transactions": 44,
+      "purchase_history": [
+        {
+          "month": "2023-03",
+          "volume_mt": 180,
+          "price_usd_per_mt": 596
+        },
+        {
+          "month": "2023-09",
+          "volume_mt": 190,
+          "price_usd_per_mt": 602
+        },
+        {
+          "month": "2024-03",
+          "volume_mt": 200,
+          "price_usd_per_mt": 610
+        },
+        {
+          "month": "2024-09",
+          "volume_mt": 205,
+          "price_usd_per_mt": 615
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 210,
+          "price_usd_per_mt": 620
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 195,
+          "price_usd_per_mt": 616
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 215,
+          "price_usd_per_mt": 624
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 614,
+        "yoy_change_pct": 2.5
+      },
+      "trade_records": [
+        {
+          "date": "2023-03-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 180,
+          "value_usd": 107280,
+          "unit_price": 596
+        },
+        {
+          "date": "2023-09-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 190,
+          "value_usd": 114380,
+          "unit_price": 602
+        },
+        {
+          "date": "2024-03-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 200,
+          "value_usd": 122000,
+          "unit_price": 610
+        },
+        {
+          "date": "2024-09-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 205,
+          "value_usd": 126075,
+          "unit_price": 615
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dalmia Bharat",
+          "unit": "MT",
+          "quantity": 210,
+          "value_usd": 130200,
+          "unit_price": 620
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Jubilant Ingrevia",
+          "unit": "MT",
+          "quantity": 195,
+          "value_usd": 120120,
+          "unit_price": 616
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Sterling Chemicals India",
+          "unit": "MT",
+          "quantity": 215,
+          "value_usd": 134160,
+          "unit_price": 624
+        }
+      ]
+    }
+  ],
+  "propylene glycol": [
+    {
+      "company_name": "Beiersdorf AG",
+      "country": "DE",
+      "website": "https://www.beiersdorf.com",
+      "contact_name": "Klaus Werner",
+      "contact_designation": "Global Sourcing Manager",
+      "contact_email": "k.werner@beiersdorf.com",
+      "num_transactions": 30,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 65,
+          "price_usd_per_mt": 1390
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 70,
+          "price_usd_per_mt": 1400
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 68,
+          "price_usd_per_mt": 1410
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 72,
+          "price_usd_per_mt": 1425
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 75,
+          "price_usd_per_mt": 1435
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 74,
+          "price_usd_per_mt": 1442
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 80,
+          "price_usd_per_mt": 1450
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 75,
+          "price_usd_per_mt": 1440
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 90,
+          "price_usd_per_mt": 1460
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 1450,
+        "yoy_change_pct": 3.5
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 65,
+          "value_usd": 90350,
+          "unit_price": 1390
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "DE",
+          "destination_port": "Bremen",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 70,
+          "value_usd": 98000,
+          "unit_price": 1400
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 68,
+          "value_usd": 95880,
+          "unit_price": 1410
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "DE",
+          "destination_port": "Bremen",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 72,
+          "value_usd": 102600,
+          "unit_price": 1425
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 75,
+          "value_usd": 107625,
+          "unit_price": 1435
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "DE",
+          "destination_port": "Bremen",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 74,
+          "value_usd": 106708,
+          "unit_price": 1442
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 80,
+          "value_usd": 116000,
+          "unit_price": 1450
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "DE",
+          "destination_port": "Bremen",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 75,
+          "value_usd": 108000,
+          "unit_price": 1440
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "DE",
+          "destination_port": "Hamburg",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 90,
+          "value_usd": 131400,
+          "unit_price": 1460
+        }
+      ]
+    },
+    {
+      "company_name": "Hikma Pharmaceuticals",
+      "country": "AE",
+      "website": "https://www.hikma.com",
+      "contact_name": "Rania Al-Hassan",
+      "contact_designation": "API Procurement Director",
+      "contact_email": "r.alhassan@hikma.com",
+      "num_transactions": 24,
+      "purchase_history": [
+        {
+          "month": "2024-03",
+          "volume_mt": 38,
+          "price_usd_per_mt": 1460
+        },
+        {
+          "month": "2024-09",
+          "volume_mt": 42,
+          "price_usd_per_mt": 1465
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 40,
+          "price_usd_per_mt": 1470
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 40,
+          "price_usd_per_mt": 1480
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 45,
+          "price_usd_per_mt": 1470
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 38,
+          "price_usd_per_mt": 1490
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 1480,
+        "yoy_change_pct": 4.1
+      },
+      "trade_records": [
+        {
+          "date": "2024-03-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 38,
+          "value_usd": 55480,
+          "unit_price": 1460
+        },
+        {
+          "date": "2024-09-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 42,
+          "value_usd": 61530,
+          "unit_price": 1465
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 40,
+          "value_usd": 58800,
+          "unit_price": 1470
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 40,
+          "value_usd": 59200,
+          "unit_price": 1480
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 45,
+          "value_usd": 66150,
+          "unit_price": 1470
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 38,
+          "value_usd": 56620,
+          "unit_price": 1490
+        }
+      ]
+    },
+    {
+      "company_name": "PT Indofood Sukses Makmur",
+      "country": "ID",
+      "website": "https://www.indofood.com",
+      "contact_name": "Budi Santoso",
+      "contact_designation": "Supply Chain Head",
+      "contact_email": "b.santoso@indofood.com",
+      "num_transactions": 18,
+      "purchase_history": [
+        {
+          "month": "2023-04",
+          "volume_mt": 50,
+          "price_usd_per_mt": 1410
+        },
+        {
+          "month": "2023-10",
+          "volume_mt": 55,
+          "price_usd_per_mt": 1418
+        },
+        {
+          "month": "2024-04",
+          "volume_mt": 58,
+          "price_usd_per_mt": 1422
+        },
+        {
+          "month": "2024-10",
+          "volume_mt": 60,
+          "price_usd_per_mt": 1428
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 60,
+          "price_usd_per_mt": 1430
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 55,
+          "price_usd_per_mt": 1425
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 65,
+          "price_usd_per_mt": 1440
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 1432,
+        "yoy_change_pct": 1.0
+      },
+      "trade_records": [
+        {
+          "date": "2023-04-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 50,
+          "value_usd": 70500,
+          "unit_price": 1410
+        },
+        {
+          "date": "2023-10-15",
+          "buyer_country": "ID",
+          "destination_port": "Surabaya",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 55,
+          "value_usd": 77990,
+          "unit_price": 1418
+        },
+        {
+          "date": "2024-04-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 58,
+          "value_usd": 82476,
+          "unit_price": 1422
+        },
+        {
+          "date": "2024-10-15",
+          "buyer_country": "ID",
+          "destination_port": "Surabaya",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 60,
+          "value_usd": 85680,
+          "unit_price": 1428
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 60,
+          "value_usd": 85800,
+          "unit_price": 1430
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "ID",
+          "destination_port": "Surabaya",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 55,
+          "value_usd": 78375,
+          "unit_price": 1425
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 65,
+          "value_usd": 93600,
+          "unit_price": 1440
+        }
+      ]
+    },
+    {
+      "company_name": "Nestl\u00e9 S.A.",
+      "country": "CH",
+      "website": "https://www.nestle.com",
+      "contact_name": "Pierre Dubois",
+      "contact_designation": "Ingredients Procurement Lead",
+      "contact_email": "p.dubois@nestle.com",
+      "contact_phone": "+41-21-924-2111",
+      "num_transactions": 22,
+      "purchase_history": [
+        {
+          "month": "2023-02",
+          "volume_mt": 45,
+          "price_usd_per_mt": 1395
+        },
+        {
+          "month": "2023-08",
+          "volume_mt": 48,
+          "price_usd_per_mt": 1408
+        },
+        {
+          "month": "2024-02",
+          "volume_mt": 50,
+          "price_usd_per_mt": 1420
+        },
+        {
+          "month": "2024-08",
+          "volume_mt": 52,
+          "price_usd_per_mt": 1432
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 55,
+          "price_usd_per_mt": 1445
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 50,
+          "price_usd_per_mt": 1438
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 58,
+          "price_usd_per_mt": 1452
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 1435,
+        "yoy_change_pct": 2.9
+      },
+      "trade_records": [
+        {
+          "date": "2023-02-15",
+          "buyer_country": "CH",
+          "destination_port": "Basel (via Hamburg)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 45,
+          "value_usd": 62775,
+          "unit_price": 1395
+        },
+        {
+          "date": "2023-08-15",
+          "buyer_country": "CH",
+          "destination_port": "Basel (via Hamburg)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 48,
+          "value_usd": 67584,
+          "unit_price": 1408
+        },
+        {
+          "date": "2024-02-15",
+          "buyer_country": "CH",
+          "destination_port": "Basel (via Hamburg)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 50,
+          "value_usd": 71000,
+          "unit_price": 1420
+        },
+        {
+          "date": "2024-08-15",
+          "buyer_country": "CH",
+          "destination_port": "Basel (via Hamburg)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 52,
+          "value_usd": 74464,
+          "unit_price": 1432
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "CH",
+          "destination_port": "Basel (via Hamburg)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 55,
+          "value_usd": 79475,
+          "unit_price": 1445
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "CH",
+          "destination_port": "Basel (via Hamburg)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 50,
+          "value_usd": 71900,
+          "unit_price": 1438
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "CH",
+          "destination_port": "Basel (via Hamburg)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 58,
+          "value_usd": 84216,
+          "unit_price": 1452
+        }
+      ]
+    },
+    {
+      "company_name": "Al-Rawabi Dairy LLC",
+      "country": "AE",
+      "website": "https://www.alrawabi.com",
+      "contact_name": "Omar Al-Farsi",
+      "contact_designation": "Supply Chain Manager",
+      "contact_email": null,
+      "contact_phone": "+971-4-338-6633",
+      "num_transactions": 14,
+      "purchase_history": [
+        {
+          "month": "2024-05",
+          "volume_mt": 22,
+          "price_usd_per_mt": 1445
+        },
+        {
+          "month": "2024-11",
+          "volume_mt": 25,
+          "price_usd_per_mt": 1455
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 28,
+          "price_usd_per_mt": 1462
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 30,
+          "price_usd_per_mt": 1468
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 1458,
+        "yoy_change_pct": 3.8
+      },
+      "trade_records": [
+        {
+          "date": "2024-05-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 22,
+          "value_usd": 31790,
+          "unit_price": 1445
+        },
+        {
+          "date": "2024-11-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "ONGC Petro additions",
+          "unit": "MT",
+          "quantity": 25,
+          "value_usd": 36375,
+          "unit_price": 1455
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Haldia Petrochemicals",
+          "unit": "MT",
+          "quantity": 28,
+          "value_usd": 40936,
+          "unit_price": 1462
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "AE",
+          "destination_port": "Jebel Ali",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Dow Chemicals India",
+          "unit": "MT",
+          "quantity": 30,
+          "value_usd": 44040,
+          "unit_price": 1468
+        }
+      ]
+    }
+  ],
+  "caustic soda": [
+    {
+      "company_name": "APP (Asia Pulp & Paper) Group",
+      "country": "ID",
+      "website": "https://www.asiapulppaper.com",
+      "contact_name": "Agus Prabowo",
+      "contact_designation": "Chemical Procurement VP",
+      "contact_email": "agus.prabowo@app.co.id",
+      "num_transactions": 96,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 1800,
+          "price_usd_per_mt": 305
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 1850,
+          "price_usd_per_mt": 310
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 1900,
+          "price_usd_per_mt": 312
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 1950,
+          "price_usd_per_mt": 315
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 1970,
+          "price_usd_per_mt": 317
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 1980,
+          "price_usd_per_mt": 318
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 2000,
+          "price_usd_per_mt": 320
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 1900,
+          "price_usd_per_mt": 315
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 2100,
+          "price_usd_per_mt": 325
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 320,
+        "yoy_change_pct": 0.3
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 1800,
+          "value_usd": 549000,
+          "unit_price": 305
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "ID",
+          "destination_port": "Surabaya",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 1850,
+          "value_usd": 573500,
+          "unit_price": 310
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 1900,
+          "value_usd": 592800,
+          "unit_price": 312
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "ID",
+          "destination_port": "Surabaya",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 1950,
+          "value_usd": 614250,
+          "unit_price": 315
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 1970,
+          "value_usd": 624490,
+          "unit_price": 317
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "ID",
+          "destination_port": "Surabaya",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 1980,
+          "value_usd": 629640,
+          "unit_price": 318
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 2000,
+          "value_usd": 640000,
+          "unit_price": 320
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "ID",
+          "destination_port": "Surabaya",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 1900,
+          "value_usd": 598500,
+          "unit_price": 315
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "ID",
+          "destination_port": "Tanjung Priok (Jakarta)",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 2100,
+          "value_usd": 682500,
+          "unit_price": 325
+        }
+      ]
+    },
+    {
+      "company_name": "Tata Chemicals Ltd",
+      "country": "IN",
+      "website": "https://www.tatachemicals.com",
+      "contact_name": "Suresh Nair",
+      "contact_designation": "Chief Procurement Officer",
+      "contact_email": "suresh.nair@tatachemicals.com",
+      "num_transactions": 84,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 1300,
+          "price_usd_per_mt": 300
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 1350,
+          "price_usd_per_mt": 305
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 1380,
+          "price_usd_per_mt": 308
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 1400,
+          "price_usd_per_mt": 308
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 1420,
+          "price_usd_per_mt": 310
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 1390,
+          "price_usd_per_mt": 312
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 1500,
+          "price_usd_per_mt": 312
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 1400,
+          "price_usd_per_mt": 308
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 1600,
+          "price_usd_per_mt": 318
+        }
+      ],
+      "pricing_trend": {
+        "direction": "falling",
+        "avg_usd_per_mt": 313,
+        "yoy_change_pct": -2.1
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 1300,
+          "value_usd": 390000,
+          "unit_price": 300
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 1350,
+          "value_usd": 411750,
+          "unit_price": 305
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 1380,
+          "value_usd": 425040,
+          "unit_price": 308
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 1400,
+          "value_usd": 431200,
+          "unit_price": 308
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 1420,
+          "value_usd": 440200,
+          "unit_price": 310
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 1390,
+          "value_usd": 433680,
+          "unit_price": 312
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 1500,
+          "value_usd": 468000,
+          "unit_price": 312
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 1400,
+          "value_usd": 431200,
+          "unit_price": 308
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 1600,
+          "value_usd": 508800,
+          "unit_price": 318
+        }
+      ]
+    },
+    {
+      "company_name": "Thai Union Group",
+      "country": "TH",
+      "website": "https://www.thaiunion.com",
+      "contact_name": "Siriporn Charoenwong",
+      "contact_designation": "Procurement Manager",
+      "contact_email": "siriporn.c@thaiunion.com",
+      "num_transactions": 42,
+      "purchase_history": [
+        {
+          "month": "2025-01",
+          "volume_mt": 300,
+          "price_usd_per_mt": 325
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 280,
+          "price_usd_per_mt": 320
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 310,
+          "price_usd_per_mt": 328
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 324,
+        "yoy_change_pct": 1.5
+      },
+      "trade_records": [
+        {
+          "date": "2025-01-15",
+          "buyer_country": "TH",
+          "destination_port": "Laem Chabang",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 300,
+          "value_usd": 97500,
+          "unit_price": 325
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "TH",
+          "destination_port": "Laem Chabang",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 280,
+          "value_usd": 89600,
+          "unit_price": 320
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "TH",
+          "destination_port": "Laem Chabang",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 310,
+          "value_usd": 101680,
+          "unit_price": 328
+        }
+      ]
+    },
+    {
+      "company_name": "Gulf Petrochemical Industries",
+      "country": "BH",
+      "website": "https://www.gpic.com",
+      "contact_name": "Ahmed Al-Mansoori",
+      "contact_designation": "Procurement Director",
+      "contact_email": null,
+      "contact_phone": "+973-1773-1777",
+      "num_transactions": 56,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 900,
+          "price_usd_per_mt": 298
+        },
+        {
+          "month": "2023-07",
+          "volume_mt": 920,
+          "price_usd_per_mt": 305
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 950,
+          "price_usd_per_mt": 310
+        },
+        {
+          "month": "2024-07",
+          "volume_mt": 960,
+          "price_usd_per_mt": 314
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 980,
+          "price_usd_per_mt": 318
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 940,
+          "price_usd_per_mt": 315
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 995,
+          "price_usd_per_mt": 322
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 312,
+        "yoy_change_pct": 2.6
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "BH",
+          "destination_port": "Sitra",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 900,
+          "value_usd": 268200,
+          "unit_price": 298
+        },
+        {
+          "date": "2023-07-15",
+          "buyer_country": "BH",
+          "destination_port": "Sitra",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 920,
+          "value_usd": 280600,
+          "unit_price": 305
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "BH",
+          "destination_port": "Sitra",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 950,
+          "value_usd": 294500,
+          "unit_price": 310
+        },
+        {
+          "date": "2024-07-15",
+          "buyer_country": "BH",
+          "destination_port": "Sitra",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 960,
+          "value_usd": 301440,
+          "unit_price": 314
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "BH",
+          "destination_port": "Sitra",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 980,
+          "value_usd": 311640,
+          "unit_price": 318
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "BH",
+          "destination_port": "Sitra",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 940,
+          "value_usd": 296100,
+          "unit_price": 315
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "BH",
+          "destination_port": "Sitra",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 995,
+          "value_usd": 320390,
+          "unit_price": 322
+        }
+      ]
+    },
+    {
+      "company_name": "Nile Chemicals & Textiles",
+      "country": "EG",
+      "website": "https://www.nilechemicals.eg",
+      "contact_name": "Yasmine Farouk",
+      "contact_designation": "Head of Sourcing",
+      "contact_email": "yasmine.farouk@nilechemicals.eg",
+      "contact_phone": "+20-2-2480-5500",
+      "num_transactions": 30,
+      "purchase_history": [
+        {
+          "month": "2023-04",
+          "volume_mt": 350,
+          "price_usd_per_mt": 302
+        },
+        {
+          "month": "2023-10",
+          "volume_mt": 360,
+          "price_usd_per_mt": 308
+        },
+        {
+          "month": "2024-04",
+          "volume_mt": 370,
+          "price_usd_per_mt": 312
+        },
+        {
+          "month": "2024-10",
+          "volume_mt": 375,
+          "price_usd_per_mt": 315
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 385,
+          "price_usd_per_mt": 319
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 370,
+          "price_usd_per_mt": 316
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 390,
+          "price_usd_per_mt": 323
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 314,
+        "yoy_change_pct": 3.0
+      },
+      "trade_records": [
+        {
+          "date": "2023-04-15",
+          "buyer_country": "EG",
+          "destination_port": "Alexandria",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 350,
+          "value_usd": 105700,
+          "unit_price": 302
+        },
+        {
+          "date": "2023-10-15",
+          "buyer_country": "EG",
+          "destination_port": "Port Said",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 360,
+          "value_usd": 110880,
+          "unit_price": 308
+        },
+        {
+          "date": "2024-04-15",
+          "buyer_country": "EG",
+          "destination_port": "Alexandria",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 370,
+          "value_usd": 115440,
+          "unit_price": 312
+        },
+        {
+          "date": "2024-10-15",
+          "buyer_country": "EG",
+          "destination_port": "Port Said",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 375,
+          "value_usd": 118125,
+          "unit_price": 315
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "EG",
+          "destination_port": "Alexandria",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Aditya Birla Chemicals",
+          "unit": "MT",
+          "quantity": 385,
+          "value_usd": 122815,
+          "unit_price": 319
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "EG",
+          "destination_port": "Port Said",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Hazira",
+          "seller_name": "Chemplast Sanmar",
+          "unit": "MT",
+          "quantity": 370,
+          "value_usd": 116920,
+          "unit_price": 316
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "EG",
+          "destination_port": "Alexandria",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "Gujarat Alkalies",
+          "unit": "MT",
+          "quantity": 390,
+          "value_usd": 125970,
+          "unit_price": 323
+        }
+      ]
+    }
+  ],
+  "isopropyl alcohol": [
+    {
+      "company_name": "Samsung Biologics Co Ltd",
+      "country": "KR",
+      "website": "https://www.samsungbiologics.com",
+      "contact_name": "Soo-Yeon Park",
+      "contact_designation": "Raw Material Sourcing Lead",
+      "contact_email": "sooyeon.park@samsungbiologics.com",
+      "num_transactions": 52,
+      "purchase_history": [
+        {
+          "month": "2023-02",
+          "volume_mt": 120,
+          "price_usd_per_mt": 840
+        },
+        {
+          "month": "2023-08",
+          "volume_mt": 130,
+          "price_usd_per_mt": 852
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 135,
+          "price_usd_per_mt": 860
+        },
+        {
+          "month": "2024-02",
+          "volume_mt": 138,
+          "price_usd_per_mt": 865
+        },
+        {
+          "month": "2024-08",
+          "volume_mt": 142,
+          "price_usd_per_mt": 872
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 145,
+          "price_usd_per_mt": 880
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 150,
+          "price_usd_per_mt": 890
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 140,
+          "price_usd_per_mt": 880
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 160,
+          "price_usd_per_mt": 895
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 888,
+        "yoy_change_pct": 5.2
+      },
+      "trade_records": [
+        {
+          "date": "2023-02-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 120,
+          "value_usd": 100800,
+          "unit_price": 840
+        },
+        {
+          "date": "2023-08-15",
+          "buyer_country": "KR",
+          "destination_port": "Incheon",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 130,
+          "value_usd": 110760,
+          "unit_price": 852
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 135,
+          "value_usd": 116100,
+          "unit_price": 860
+        },
+        {
+          "date": "2024-02-15",
+          "buyer_country": "KR",
+          "destination_port": "Incheon",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 138,
+          "value_usd": 119370,
+          "unit_price": 865
+        },
+        {
+          "date": "2024-08-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 142,
+          "value_usd": 123824,
+          "unit_price": 872
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "KR",
+          "destination_port": "Incheon",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 145,
+          "value_usd": 127600,
+          "unit_price": 880
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 150,
+          "value_usd": 133500,
+          "unit_price": 890
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "KR",
+          "destination_port": "Incheon",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 140,
+          "value_usd": 123200,
+          "unit_price": 880
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "KR",
+          "destination_port": "Busan",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 160,
+          "value_usd": 143200,
+          "unit_price": 895
+        }
+      ]
+    },
+    {
+      "company_name": "Wipro Enterprises Ltd",
+      "country": "IN",
+      "website": "https://www.wipro.com",
+      "contact_name": "Ananya Krishnan",
+      "contact_designation": "Global Procurement Head",
+      "contact_email": "ananya.krishnan@wipro.com",
+      "num_transactions": 38,
+      "purchase_history": [
+        {
+          "month": "2023-03",
+          "volume_mt": 75,
+          "price_usd_per_mt": 845
+        },
+        {
+          "month": "2023-09",
+          "volume_mt": 78,
+          "price_usd_per_mt": 850
+        },
+        {
+          "month": "2024-03",
+          "volume_mt": 82,
+          "price_usd_per_mt": 858
+        },
+        {
+          "month": "2024-09",
+          "volume_mt": 85,
+          "price_usd_per_mt": 863
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 90,
+          "price_usd_per_mt": 870
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 85,
+          "price_usd_per_mt": 865
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 95,
+          "price_usd_per_mt": 875
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 870,
+        "yoy_change_pct": 2.3
+      },
+      "trade_records": [
+        {
+          "date": "2023-03-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 75,
+          "value_usd": 63375,
+          "unit_price": 845
+        },
+        {
+          "date": "2023-09-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 78,
+          "value_usd": 66300,
+          "unit_price": 850
+        },
+        {
+          "date": "2024-03-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 82,
+          "value_usd": 70356,
+          "unit_price": 858
+        },
+        {
+          "date": "2024-09-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 85,
+          "value_usd": 73355,
+          "unit_price": 863
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 90,
+          "value_usd": 78300,
+          "unit_price": 870
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 85,
+          "value_usd": 73525,
+          "unit_price": 865
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 95,
+          "value_usd": 83125,
+          "unit_price": 875
+        }
+      ]
+    },
+    {
+      "company_name": "Foxconn Technology Group",
+      "country": "TW",
+      "website": "https://www.foxconn.com",
+      "contact_name": "Wei-Chen Liu",
+      "contact_designation": "Chemical Materials Buyer",
+      "contact_email": "weichen.liu@foxconn.com",
+      "num_transactions": 66,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 360,
+          "price_usd_per_mt": 830
+        },
+        {
+          "month": "2023-07",
+          "volume_mt": 370,
+          "price_usd_per_mt": 840
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 375,
+          "price_usd_per_mt": 848
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 380,
+          "price_usd_per_mt": 855
+        },
+        {
+          "month": "2024-07",
+          "volume_mt": 388,
+          "price_usd_per_mt": 860
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 392,
+          "price_usd_per_mt": 862
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 400,
+          "price_usd_per_mt": 865
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 380,
+          "price_usd_per_mt": 860
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 420,
+          "price_usd_per_mt": 870
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 865,
+        "yoy_change_pct": 4.8
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "TW",
+          "destination_port": "Kaohsiung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 360,
+          "value_usd": 298800,
+          "unit_price": 830
+        },
+        {
+          "date": "2023-07-15",
+          "buyer_country": "TW",
+          "destination_port": "Keelung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 370,
+          "value_usd": 310800,
+          "unit_price": 840
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "TW",
+          "destination_port": "Kaohsiung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 375,
+          "value_usd": 318000,
+          "unit_price": 848
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "TW",
+          "destination_port": "Keelung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 380,
+          "value_usd": 324900,
+          "unit_price": 855
+        },
+        {
+          "date": "2024-07-15",
+          "buyer_country": "TW",
+          "destination_port": "Kaohsiung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 388,
+          "value_usd": 333680,
+          "unit_price": 860
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "TW",
+          "destination_port": "Keelung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 392,
+          "value_usd": 337904,
+          "unit_price": 862
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "TW",
+          "destination_port": "Kaohsiung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 400,
+          "value_usd": 346000,
+          "unit_price": 865
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "TW",
+          "destination_port": "Keelung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 380,
+          "value_usd": 326800,
+          "unit_price": 860
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "TW",
+          "destination_port": "Kaohsiung",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 420,
+          "value_usd": 365400,
+          "unit_price": 870
+        }
+      ]
+    },
+    {
+      "company_name": "Haleon plc",
+      "country": "GB",
+      "website": "https://www.haleon.com",
+      "contact_name": "James Whitfield",
+      "contact_designation": "Excipients Procurement Manager",
+      "contact_email": "j.whitfield@haleon.com",
+      "num_transactions": 28,
+      "purchase_history": [
+        {
+          "month": "2023-05",
+          "volume_mt": 58,
+          "price_usd_per_mt": 862
+        },
+        {
+          "month": "2023-11",
+          "volume_mt": 62,
+          "price_usd_per_mt": 870
+        },
+        {
+          "month": "2024-05",
+          "volume_mt": 64,
+          "price_usd_per_mt": 880
+        },
+        {
+          "month": "2024-11",
+          "volume_mt": 66,
+          "price_usd_per_mt": 890
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 70,
+          "price_usd_per_mt": 900
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 65,
+          "price_usd_per_mt": 895
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 75,
+          "price_usd_per_mt": 905
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 900,
+        "yoy_change_pct": 6.0
+      },
+      "trade_records": [
+        {
+          "date": "2023-05-15",
+          "buyer_country": "GB",
+          "destination_port": "Felixstowe",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 58,
+          "value_usd": 49996,
+          "unit_price": 862
+        },
+        {
+          "date": "2023-11-15",
+          "buyer_country": "GB",
+          "destination_port": "Southampton",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 62,
+          "value_usd": 53940,
+          "unit_price": 870
+        },
+        {
+          "date": "2024-05-15",
+          "buyer_country": "GB",
+          "destination_port": "Felixstowe",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 64,
+          "value_usd": 56320,
+          "unit_price": 880
+        },
+        {
+          "date": "2024-11-15",
+          "buyer_country": "GB",
+          "destination_port": "Southampton",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 66,
+          "value_usd": 58740,
+          "unit_price": 890
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "GB",
+          "destination_port": "Felixstowe",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 70,
+          "value_usd": 63000,
+          "unit_price": 900
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "GB",
+          "destination_port": "Southampton",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 65,
+          "value_usd": 58175,
+          "unit_price": 895
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "GB",
+          "destination_port": "Felixstowe",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 75,
+          "value_usd": 67875,
+          "unit_price": 905
+        }
+      ]
+    },
+    {
+      "company_name": "Hanoi Chemical Corp",
+      "country": "VN",
+      "website": "https://www.hcc.com.vn",
+      "contact_name": "Nguyen Van Hung",
+      "contact_designation": "Import Manager",
+      "contact_email": null,
+      "contact_phone": "+84-24-3825-1234",
+      "num_transactions": 20,
+      "purchase_history": [
+        {
+          "month": "2024-02",
+          "volume_mt": 55,
+          "price_usd_per_mt": 858
+        },
+        {
+          "month": "2024-08",
+          "volume_mt": 60,
+          "price_usd_per_mt": 865
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 65,
+          "price_usd_per_mt": 872
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 60,
+          "price_usd_per_mt": 868
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 68,
+          "price_usd_per_mt": 876
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 868,
+        "yoy_change_pct": 4.2
+      },
+      "trade_records": [
+        {
+          "date": "2024-02-15",
+          "buyer_country": "VN",
+          "destination_port": "Ho Chi Minh City",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 55,
+          "value_usd": 47190,
+          "unit_price": 858
+        },
+        {
+          "date": "2024-08-15",
+          "buyer_country": "VN",
+          "destination_port": "Haiphong",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 60,
+          "value_usd": 51900,
+          "unit_price": 865
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "VN",
+          "destination_port": "Ho Chi Minh City",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 65,
+          "value_usd": 56680,
+          "unit_price": 872
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "VN",
+          "destination_port": "Haiphong",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 60,
+          "value_usd": 52080,
+          "unit_price": 868
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "VN",
+          "destination_port": "Ho Chi Minh City",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 68,
+          "value_usd": 59568,
+          "unit_price": 876
+        }
+      ]
+    },
+    {
+      "company_name": "Sun Pharmaceutical Industries",
+      "country": "IN",
+      "website": "https://www.sunpharma.com",
+      "contact_name": "Priya Sharma",
+      "contact_designation": "API & Excipients Buyer",
+      "contact_email": "priya.sharma@sunpharma.com",
+      "contact_phone": "+91-22-4324-4324",
+      "num_transactions": 45,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 70,
+          "price_usd_per_mt": 842
+        },
+        {
+          "month": "2023-07",
+          "volume_mt": 75,
+          "price_usd_per_mt": 850
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 78,
+          "price_usd_per_mt": 858
+        },
+        {
+          "month": "2024-07",
+          "volume_mt": 82,
+          "price_usd_per_mt": 866
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 88,
+          "price_usd_per_mt": 872
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 84,
+          "price_usd_per_mt": 868
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 92,
+          "price_usd_per_mt": 878
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 862,
+        "yoy_change_pct": 3.8
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 70,
+          "value_usd": 58940,
+          "unit_price": 842
+        },
+        {
+          "date": "2023-07-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 75,
+          "value_usd": 63750,
+          "unit_price": 850
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 78,
+          "value_usd": 66924,
+          "unit_price": 858
+        },
+        {
+          "date": "2024-07-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 82,
+          "value_usd": 71012,
+          "unit_price": 866
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Deepak Fertilisers",
+          "unit": "MT",
+          "quantity": 88,
+          "value_usd": 76736,
+          "unit_price": 872
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mumbai",
+          "seller_name": "GNFC",
+          "unit": "MT",
+          "quantity": 84,
+          "value_usd": 72912,
+          "unit_price": 868
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Mody Chemi-Pharma",
+          "unit": "MT",
+          "quantity": 92,
+          "value_usd": 80776,
+          "unit_price": 878
+        }
+      ]
+    }
+  ],
+  "titanium dioxide": [
+    {
+      "company_name": "Asian Paints Ltd",
+      "country": "IN",
+      "website": "https://www.asianpaints.com",
+      "contact_name": "Rohit Desai",
+      "contact_designation": "Pigments & Minerals Buyer",
+      "contact_email": "rohit.desai@asianpaints.com",
+      "num_transactions": 120,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 540,
+          "price_usd_per_mt": 2680
+        },
+        {
+          "month": "2023-06",
+          "volume_mt": 560,
+          "price_usd_per_mt": 2700
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 570,
+          "price_usd_per_mt": 2720
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 575,
+          "price_usd_per_mt": 2740
+        },
+        {
+          "month": "2024-06",
+          "volume_mt": 585,
+          "price_usd_per_mt": 2760
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 592,
+          "price_usd_per_mt": 2780
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 600,
+          "price_usd_per_mt": 2800
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 580,
+          "price_usd_per_mt": 2780
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 620,
+          "price_usd_per_mt": 2820
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 2800,
+        "yoy_change_pct": 7.3
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 540,
+          "value_usd": 1447200,
+          "unit_price": 2680
+        },
+        {
+          "date": "2023-06-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 560,
+          "value_usd": 1512000,
+          "unit_price": 2700
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 570,
+          "value_usd": 1550400,
+          "unit_price": 2720
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 575,
+          "value_usd": 1575500,
+          "unit_price": 2740
+        },
+        {
+          "date": "2024-06-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 585,
+          "value_usd": 1614600,
+          "unit_price": 2760
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 592,
+          "value_usd": 1645760,
+          "unit_price": 2780
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 600,
+          "value_usd": 1680000,
+          "unit_price": 2800
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "IN",
+          "destination_port": "Nhava Sheva",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 580,
+          "value_usd": 1612400,
+          "unit_price": 2780
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "IN",
+          "destination_port": "Mumbai",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 620,
+          "value_usd": 1748400,
+          "unit_price": 2820
+        }
+      ]
+    },
+    {
+      "company_name": "Kansai Paint Co Ltd",
+      "country": "JP",
+      "website": "https://www.kansai.co.jp",
+      "contact_name": "Yuki Nakamura",
+      "contact_designation": "Raw Material Purchase Manager",
+      "contact_email": "y.nakamura@kansai.co.jp",
+      "num_transactions": 84,
+      "purchase_history": [
+        {
+          "month": "2023-02",
+          "volume_mt": 300,
+          "price_usd_per_mt": 2700
+        },
+        {
+          "month": "2023-08",
+          "volume_mt": 315,
+          "price_usd_per_mt": 2720
+        },
+        {
+          "month": "2023-12",
+          "volume_mt": 320,
+          "price_usd_per_mt": 2730
+        },
+        {
+          "month": "2024-02",
+          "volume_mt": 325,
+          "price_usd_per_mt": 2760
+        },
+        {
+          "month": "2024-08",
+          "volume_mt": 335,
+          "price_usd_per_mt": 2800
+        },
+        {
+          "month": "2024-12",
+          "volume_mt": 340,
+          "price_usd_per_mt": 2830
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 350,
+          "price_usd_per_mt": 2850
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 330,
+          "price_usd_per_mt": 2840
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 360,
+          "price_usd_per_mt": 2860
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 2850,
+        "yoy_change_pct": 6.8
+      },
+      "trade_records": [
+        {
+          "date": "2023-02-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 300,
+          "value_usd": 810000,
+          "unit_price": 2700
+        },
+        {
+          "date": "2023-08-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 315,
+          "value_usd": 856800,
+          "unit_price": 2720
+        },
+        {
+          "date": "2023-12-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 320,
+          "value_usd": 873600,
+          "unit_price": 2730
+        },
+        {
+          "date": "2024-02-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 325,
+          "value_usd": 897000,
+          "unit_price": 2760
+        },
+        {
+          "date": "2024-08-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 335,
+          "value_usd": 938000,
+          "unit_price": 2800
+        },
+        {
+          "date": "2024-12-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 340,
+          "value_usd": 962200,
+          "unit_price": 2830
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 350,
+          "value_usd": 997500,
+          "unit_price": 2850
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "JP",
+          "destination_port": "Osaka",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 330,
+          "value_usd": 937200,
+          "unit_price": 2840
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "JP",
+          "destination_port": "Yokohama",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 360,
+          "value_usd": 1029600,
+          "unit_price": 2860
+        }
+      ]
+    },
+    {
+      "company_name": "Berger Paints Bangladesh",
+      "country": "BD",
+      "website": "https://www.bergerbd.com",
+      "contact_name": "Md. Rafiqul Islam",
+      "contact_designation": "Procurement Director",
+      "contact_email": "rafiqul.islam@bergerbd.com",
+      "num_transactions": 36,
+      "purchase_history": [
+        {
+          "month": "2025-01",
+          "volume_mt": 120,
+          "price_usd_per_mt": 2760
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 110,
+          "price_usd_per_mt": 2750
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 130,
+          "price_usd_per_mt": 2770
+        }
+      ],
+      "pricing_trend": {
+        "direction": "stable",
+        "avg_usd_per_mt": 2760,
+        "yoy_change_pct": 2.1
+      },
+      "trade_records": [
+        {
+          "date": "2025-01-15",
+          "buyer_country": "BD",
+          "destination_port": "Chittagong",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 120,
+          "value_usd": 331200,
+          "unit_price": 2760
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "BD",
+          "destination_port": "Chittagong",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 110,
+          "value_usd": 302500,
+          "unit_price": 2750
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "BD",
+          "destination_port": "Chittagong",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 130,
+          "value_usd": 360100,
+          "unit_price": 2770
+        }
+      ]
+    },
+    {
+      "company_name": "Akzo Nobel N.V.",
+      "country": "NL",
+      "website": "https://www.akzonobel.com",
+      "contact_name": "Ruud van den Berg",
+      "contact_designation": "Strategic Sourcing Manager",
+      "contact_email": "r.vandenberg@akzonobel.com",
+      "contact_phone": "+31-88-969-7555",
+      "num_transactions": 78,
+      "purchase_history": [
+        {
+          "month": "2023-01",
+          "volume_mt": 280,
+          "price_usd_per_mt": 2690
+        },
+        {
+          "month": "2023-07",
+          "volume_mt": 290,
+          "price_usd_per_mt": 2710
+        },
+        {
+          "month": "2024-01",
+          "volume_mt": 305,
+          "price_usd_per_mt": 2745
+        },
+        {
+          "month": "2024-07",
+          "volume_mt": 315,
+          "price_usd_per_mt": 2775
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 330,
+          "price_usd_per_mt": 2810
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 318,
+          "price_usd_per_mt": 2795
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 340,
+          "price_usd_per_mt": 2825
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 2793,
+        "yoy_change_pct": 5.9
+      },
+      "trade_records": [
+        {
+          "date": "2023-01-15",
+          "buyer_country": "NL",
+          "destination_port": "Rotterdam",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 280,
+          "value_usd": 753200,
+          "unit_price": 2690
+        },
+        {
+          "date": "2023-07-15",
+          "buyer_country": "NL",
+          "destination_port": "Rotterdam",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 290,
+          "value_usd": 785900,
+          "unit_price": 2710
+        },
+        {
+          "date": "2024-01-15",
+          "buyer_country": "NL",
+          "destination_port": "Rotterdam",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 305,
+          "value_usd": 837225,
+          "unit_price": 2745
+        },
+        {
+          "date": "2024-07-15",
+          "buyer_country": "NL",
+          "destination_port": "Rotterdam",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 315,
+          "value_usd": 874125,
+          "unit_price": 2775
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "NL",
+          "destination_port": "Rotterdam",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 330,
+          "value_usd": 927300,
+          "unit_price": 2810
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "NL",
+          "destination_port": "Rotterdam",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 318,
+          "value_usd": 888810,
+          "unit_price": 2795
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "NL",
+          "destination_port": "Rotterdam",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 340,
+          "value_usd": 960500,
+          "unit_price": 2825
+        }
+      ]
+    },
+    {
+      "company_name": "Brilliant Paint Manufacturing",
+      "country": "PK",
+      "website": "https://www.brilliantpaints.pk",
+      "contact_name": "Tariq Mahmood",
+      "contact_designation": "Purchase Officer",
+      "contact_email": null,
+      "contact_phone": "+92-42-3576-8800",
+      "num_transactions": 16,
+      "purchase_history": [
+        {
+          "month": "2024-03",
+          "volume_mt": 60,
+          "price_usd_per_mt": 2730
+        },
+        {
+          "month": "2024-09",
+          "volume_mt": 65,
+          "price_usd_per_mt": 2748
+        },
+        {
+          "month": "2025-01",
+          "volume_mt": 70,
+          "price_usd_per_mt": 2762
+        },
+        {
+          "month": "2025-02",
+          "volume_mt": 65,
+          "price_usd_per_mt": 2755
+        },
+        {
+          "month": "2025-03",
+          "volume_mt": 72,
+          "price_usd_per_mt": 2768
+        }
+      ],
+      "pricing_trend": {
+        "direction": "rising",
+        "avg_usd_per_mt": 2753,
+        "yoy_change_pct": 3.4
+      },
+      "trade_records": [
+        {
+          "date": "2024-03-15",
+          "buyer_country": "PK",
+          "destination_port": "Karachi",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 60,
+          "value_usd": 163800,
+          "unit_price": 2730
+        },
+        {
+          "date": "2024-09-15",
+          "buyer_country": "PK",
+          "destination_port": "Port Qasim",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 65,
+          "value_usd": 178620,
+          "unit_price": 2748
+        },
+        {
+          "date": "2025-01-15",
+          "buyer_country": "PK",
+          "destination_port": "Karachi",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Mundra",
+          "seller_name": "TiO2 Chemicals India",
+          "unit": "MT",
+          "quantity": 70,
+          "value_usd": 193340,
+          "unit_price": 2762
+        },
+        {
+          "date": "2025-02-15",
+          "buyer_country": "PK",
+          "destination_port": "Port Qasim",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "JNPT (Nhava Sheva)",
+          "seller_name": "Tronox India",
+          "unit": "MT",
+          "quantity": 65,
+          "value_usd": 179075,
+          "unit_price": 2755
+        },
+        {
+          "date": "2025-03-15",
+          "buyer_country": "PK",
+          "destination_port": "Karachi",
+          "seller_country": "IN",
+          "seller_origin": "India",
+          "port_of_loading": "Chennai",
+          "seller_name": "Alkali Metals",
+          "unit": "MT",
+          "quantity": 72,
+          "value_usd": 199296,
+          "unit_price": 2768
+        }
+      ]
+    }
+  ]
+}

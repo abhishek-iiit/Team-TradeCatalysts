@@ -21,6 +21,7 @@ export default function NewCampaignPage() {
   const [selectedProducts, setSelectedProducts] = useState([])
   const [selectedCountries, setSelectedCountries] = useState([])
   const [numTransactions, setNumTransactions] = useState('')
+  const [dataYear, setDataYear] = useState('2025')
   const [countrySearch, setCountrySearch] = useState('')
   const [error, setError] = useState('')
 
@@ -54,6 +55,7 @@ export default function NewCampaignPage() {
       product_ids: selectedProducts,
       country_filters: selectedCountries,
       num_transactions_yr: parseInt(numTransactions) || 0,
+      data_year: parseInt(dataYear) || 2025,
     })
   }
 
@@ -99,10 +101,21 @@ export default function NewCampaignPage() {
             )}
           </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Min. Transactions / Year</label>
-            <input type="number" min="0" value={numTransactions} onChange={(e) => setNumTransactions(e.target.value)}
-              className="w-40 border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="0" />
+          <div className="flex items-end gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Min. Transactions / Year</label>
+              <input type="number" min="0" value={numTransactions} onChange={(e) => setNumTransactions(e.target.value)}
+                className="w-40 border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="0" />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Data Year</label>
+              <select value={dataYear} onChange={(e) => setDataYear(e.target.value)}
+                className="w-36 border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white">
+                {[2025, 2024, 2023, 2022].map((y) => (
+                  <option key={y} value={y}>{y}</option>
+                ))}
+              </select>
+            </div>
           </div>
         </div>
 

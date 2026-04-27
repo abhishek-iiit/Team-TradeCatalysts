@@ -31,11 +31,41 @@ class Product(TimestampedModel):
         return self.name
 
 
+class ProductEmailStage(models.TextChoices):
+    INTRO = 'intro', 'Intro'
+    DOCUMENTS = 'documents', 'Documents'
+    REQUIREMENTS = 'requirements', 'Requirements'
+    PRICING = 'pricing', 'Pricing'
+    FOLLOWUP = 'followup', 'Follow-Up on Pricing'
+    MEETING = 'meeting', 'Meeting'
+    DEAL = 'deal', 'Deal'
+
+
+class ProductStageConfig(TimestampedModel):
+    """Per-product, per-stage email template and scheduling config."""
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='stage_configs')
+    stage = models.CharField(max_length=20, choices=ProductEmailStage.choices)
+    subject_line = models.CharField(max_length=255, blank=True)
+    email_content = models.TextField(blank=True)
+    document = models.FileField(upload_to='stage_docs/', null=True, blank=True)
+    trigger_days = models.IntegerField(default=4)
+
+    class Meta:
+        db_table = 'product_stage_configs'
+        unique_together = [('product', 'stage')]
+        ordering = ['stage']
+
+    def __str__(self):
+        return f'{self.product.name} — {self.stage}'
+
+
 class Campaign(TimestampedModel):
     title = models.CharField(max_length=255)
     products = models.ManyToManyField(Product, related_name='campaigns', blank=True)
     country_filters = models.JSONField(default=list)
     num_transactions_yr = models.IntegerField(default=0)
+    data_year = models.IntegerField(default=2025)
     created_by = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,

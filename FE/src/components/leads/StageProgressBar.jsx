@@ -1,10 +1,13 @@
 const FORWARD_STAGES = [
-  { key: 'discovered',       label: 'Discovered' },
-  { key: 'intro_sent',       label: 'Intro Sent' },
-  { key: 'pricing_sent',     label: 'Pricing Sent' },
-  { key: 'pricing_followup', label: 'Follow-Up' },
-  { key: 'meeting_set',      label: 'Meeting Set' },
-  { key: 'closed_won',       label: 'Won' },
+  { key: 'discovered',         label: 'Discovered' },
+  { key: 'intro_sent',         label: 'Intro' },
+  { key: 'documents_sent',     label: 'Docs' },
+  { key: 'requirements_asked', label: 'Req.' },
+  { key: 'pricing_sent',       label: 'Pricing' },
+  { key: 'pricing_followup',   label: 'Follow-Up' },
+  { key: 'meeting_sent',       label: 'Meeting' },
+  { key: 'deal_sent',          label: 'Deal' },
+  { key: 'closed_won',         label: 'Won' },
 ]
 
 const STAGE_INDEX = Object.fromEntries(FORWARD_STAGES.map((s, i) => [s.key, i]))
@@ -22,14 +25,14 @@ export default function StageProgressBar({ stage }) {
   const currentIdx = STAGE_INDEX[stage] ?? 0
 
   return (
-    <div className="flex items-center gap-0 w-full">
+    <div className="flex items-center gap-0 w-full overflow-x-auto">
       {FORWARD_STAGES.map((s, idx) => {
         const done = idx < currentIdx
         const active = idx === currentIdx
         return (
-          <div key={s.key} className="flex items-center flex-1 last:flex-none">
-            <div className="flex flex-col items-center">
-              <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold border-2 transition-colors ${
+          <div key={s.key} className="flex items-center flex-1 last:flex-none min-w-0">
+            <div className="flex flex-col items-center min-w-0">
+              <div className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold border-2 transition-colors shrink-0 ${
                 done
                   ? 'bg-indigo-600 border-indigo-600 text-white'
                   : active

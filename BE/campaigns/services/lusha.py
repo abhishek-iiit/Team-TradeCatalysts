@@ -1,6 +1,19 @@
+import json
 import os
+from pathlib import Path
 import requests
 from typing import Optional
+
+_DEMO_FILE = Path(__file__).resolve().parent.parent.parent / 'demo' / 'lusha_responses.json'
+_DEMO_DATA: dict | None = None
+
+
+def _load_demo_data() -> dict:
+    global _DEMO_DATA
+    if _DEMO_DATA is None:
+        with open(_DEMO_FILE) as f:
+            _DEMO_DATA = json.load(f)
+    return _DEMO_DATA
 
 
 class LushaClient:
@@ -41,6 +54,21 @@ class LushaClient:
         """
         empty = {"email": None, "phone": None, "linkedin_url": None, "raw": {}}
         if not first_name or not company_name:
+            return empty
+
+        if not self.api_key:
+            demo = _load_demo_data()
+            key = f"{first_name} {last_name}|{company_name}".lower()
+            data = demo.get(key, {})
+            if data:
+                emails = data.get("emails", [])
+                phones = data.get("phones", [])
+                return {
+                    "email": emails[0]["email"] if emails else None,
+                    "phone": phones[0]["number"] if phones else None,
+                    "linkedin_url": data.get("linkedin_url"),
+                    "raw": data,
+                }
             return empty
 
         try:

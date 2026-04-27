@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { listProducts, createProduct, deleteProduct, uploadBrochure } from '../api/products'
+import { listProducts, createProduct, deleteProduct } from '../api/products'
+import StageConfigPanel from '../components/products/StageConfigPanel'
 
 export default function ProductsPage() {
   const qc = useQueryClient()
   const [showForm, setShowForm] = useState(false)
   const [form, setForm] = useState({ name: '', hsn_code: '', cas_number: '', description: '' })
   const [error, setError] = useState('')
+  const [expandedProduct, setExpandedProduct] = useState(null)
 
   const { data: products = [], isLoading } = useQuery({
     queryKey: ['products'],
@@ -26,11 +28,6 @@ export default function ProductsPage() {
 
   const deleteMutation = useMutation({
     mutationFn: deleteProduct,
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['products'] }),
-  })
-
-  const uploadMutation = useMutation({
-    mutationFn: ({ id, file }) => uploadBrochure(id, file),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['products'] }),
   })
 
@@ -62,8 +59,8 @@ export default function ProductsPage() {
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="Acetone" />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">HSN Code</label>
-              <input value={form.hsn_code} onChange={(e) => setForm({ ...form, hsn_code: e.target.value })}
+              <label className="block text-sm font-medium text-gray-700 mb-1">HSN Code *</label>
+              <input required value={form.hsn_code} onChange={(e) => setForm({ ...form, hsn_code: e.target.value })}
                 className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm" placeholder="29141100" />
             </div>
             <div>
@@ -89,27 +86,29 @@ export default function ProductsPage() {
       ) : (
         <div className="space-y-3">
           {products.map((product) => (
-            <div key={product.id} className="bg-white border border-gray-200 rounded-xl p-5 flex items-center justify-between">
-              <div>
-                <p className="font-semibold text-gray-900">{product.name}</p>
-                <p className="text-xs text-gray-500 mt-0.5">HSN: {product.hsn_code} · CAS: {product.cas_number}</p>
+            <div key={product.id} className="bg-white border border-gray-200 rounded-xl overflow-hidden">
+              <div className="p-5 flex items-center justify-between">
+                <div>
+                  <p className="font-semibold text-gray-900">{product.name}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">HSN: {product.hsn_code} · CAS: {product.cas_number}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <button
+                    onClick={() => setExpandedProduct(expandedProduct === product.id ? null : product.id)}
+                    className="text-xs bg-indigo-50 text-indigo-700 hover:bg-indigo-100 px-2 py-0.5 rounded-full font-medium transition-colors"
+                  >
+                    {expandedProduct === product.id ? 'Hide Stages ▲' : 'Email Stages ▼'}
+                  </button>
+                  <button onClick={() => {
+                    if (window.confirm(`Delete "${product.name}"?`)) deleteMutation.mutate(product.id)
+                  }} className="text-xs text-red-500 hover:text-red-700">Delete</button>
+                </div>
               </div>
-              <div className="flex items-center gap-4">
-                {product.has_brochure ? (
-                  <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Brochure ✓</span>
-                ) : (
-                  <label className="cursor-pointer text-xs bg-yellow-100 text-yellow-700 px-2 py-0.5 rounded-full font-medium hover:bg-yellow-200">
-                    Upload Brochure
-                    <input type="file" accept=".pdf" className="hidden"
-                      onChange={(e) => {
-                        if (e.target.files[0]) uploadMutation.mutate({ id: product.id, file: e.target.files[0] })
-                      }} />
-                  </label>
-                )}
-                <button onClick={() => {
-                  if (window.confirm(`Delete "${product.name}"?`)) deleteMutation.mutate(product.id)
-                }} className="text-xs text-red-500 hover:text-red-700">Delete</button>
-              </div>
+              {expandedProduct === product.id && (
+                <div className="border-t border-gray-100 px-5 pb-5">
+                  <StageConfigPanel productId={product.id} />
+                </div>
+              )}
             </div>
           ))}
           {products.length === 0 && (

@@ -48,6 +48,7 @@ def enrich_leads_from_volza(campaign_id: str) -> None:
             hsn_code=product.hsn_code,
             countries=campaign.country_filters,
             min_transactions=campaign.num_transactions_yr,
+            data_year=campaign.data_year,
         )
 
         for item in results:
@@ -85,6 +86,7 @@ def enrich_leads_from_volza(campaign_id: str) -> None:
                 last_name=last_name,
                 designation=item.get("contact_designation", ""),
                 email=item.get("contact_email") or None,
+                phone=item.get("contact_phone") or None,
                 source=ContactSource.VOLZA,
                 is_primary=True,
             )

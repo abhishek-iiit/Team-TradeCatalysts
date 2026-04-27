@@ -21,3 +21,9 @@ export async function getMe() {
   const { data } = await api.get('/auth/me/')
   return data
 }
+
+export const getEmailSettings = () =>
+  api.get('/auth/email-settings/').then((r) => r.data)
+
+export const saveEmailSettings = (data) =>
+  api.patch('/auth/email-settings/', data).then((r) => r.data)

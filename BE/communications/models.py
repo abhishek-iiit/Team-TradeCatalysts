@@ -4,8 +4,12 @@ from common.models import TimestampedModel
 
 class ThreadType(models.TextChoices):
     INTRO = 'intro', 'Intro'
+    DOCUMENTS = 'documents', 'Documents'
+    REQUIREMENTS = 'requirements', 'Requirements'
     PRICING = 'pricing', 'Pricing'
-    FOLLOWUP = 'followup', 'Follow-Up'
+    FOLLOWUP = 'followup', 'Follow-Up on Pricing'
+    MEETING = 'meeting', 'Meeting'
+    DEAL = 'deal', 'Deal'
     NEGOTIATION = 'negotiation', 'Negotiation'
 
 

@@ -7,4 +7,5 @@ urlpatterns = [
     path('refresh/', TokenRefreshView.as_view(), name='auth-refresh'),
     path('logout/', views.logout_view, name='auth-logout'),
     path('me/', views.me_view, name='auth-me'),
+    path('email-settings/', views.email_settings_view, name='auth-email-settings'),
 ]

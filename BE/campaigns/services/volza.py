@@ -1,6 +1,19 @@
+import json
 import os
+from pathlib import Path
 import requests
 from typing import Optional
+
+_DEMO_FILE = Path(__file__).resolve().parent.parent.parent / 'demo' / 'volza_responses.json'
+_DEMO_DATA: dict | None = None
+
+
+def _load_demo_data() -> dict:
+    global _DEMO_DATA
+    if _DEMO_DATA is None:
+        with open(_DEMO_FILE) as f:
+            _DEMO_DATA = json.load(f)
+    return _DEMO_DATA
 
 
 class VölzaClient:
@@ -42,6 +55,7 @@ class VölzaClient:
         hsn_code: str = "",
         countries: list = None,
         min_transactions: int = 0,
+        data_year: int = 2025,
     ) -> list[dict]:
         """
         Search Volza for companies that import the given product.
@@ -51,9 +65,21 @@ class VölzaClient:
             "product_name": product_name,
             "hsn_code": hsn_code,
             "min_transactions": min_transactions,
+            "year": data_year,
         }
         if countries:
             params["countries"] = ",".join(countries)
+
+        if not self.api_key:
+            demo = _load_demo_data()
+            key = product_name.lower()
+            results = demo.get(key, [])
+            # Filter to companies that have purchase_history entries for data_year
+            year_str = str(data_year)
+            return [
+                r for r in results
+                if any(e["month"].startswith(year_str) for e in r.get("purchase_history", []))
+            ]
 
         try:
             response = self.session.get(

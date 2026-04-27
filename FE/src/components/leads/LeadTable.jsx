@@ -20,7 +20,9 @@ export default function LeadTable({ leads, selected, onToggle, onToggleAll }) {
             <th className="px-4 py-3 text-left font-semibold text-gray-600">Country</th>
             <th className="px-4 py-3 text-left font-semibold text-gray-600">Stage</th>
             <th className="px-4 py-3 text-left font-semibold text-gray-600">Primary Contact</th>
-            <th className="px-4 py-3 text-left font-semibold text-gray-600">Email / Phone</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-600">Email</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-600">Phone</th>
+            <th className="px-4 py-3 text-left font-semibold text-gray-600">Auto Flow</th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100">
@@ -50,13 +52,31 @@ export default function LeadTable({ leads, selected, onToggle, onToggleAll }) {
                   )}
                 </td>
                 <td className="px-4 py-3">
-                  {missingContact ? (
+                  {primary?.email ? (
+                    <span className="text-gray-600 text-xs">{primary.email}</span>
+                  ) : (
+                    <span className="text-xs text-gray-300">—</span>
+                  )}
+                </td>
+                <td className="px-4 py-3">
+                  {primary?.phone ? (
+                    <span className="text-gray-600 text-xs">{primary.phone}</span>
+                  ) : missingContact ? (
                     <span className="inline-flex items-center text-xs text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
-                      Missing contact
+                      Missing
                     </span>
                   ) : (
-                    <span className="text-gray-600 text-xs">
-                      {primary?.email || primary?.phone || '—'}
+                    <span className="text-xs text-gray-300">—</span>
+                  )}
+                </td>
+                <td className="px-4 py-3">
+                  {lead.auto_flow_paused ? (
+                    <span className="inline-flex items-center text-xs font-medium text-yellow-700 bg-yellow-50 border border-yellow-200 px-2 py-0.5 rounded-full">
+                      Paused
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center text-xs font-medium text-green-700 bg-green-50 border border-green-200 px-2 py-0.5 rounded-full">
+                      On
                     </span>
                   )}
                 </td>

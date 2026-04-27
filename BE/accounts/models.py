@@ -6,6 +6,7 @@ class User(AbstractUser):
     email = models.EmailField(unique=True)
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
+    smtp_password = models.CharField(max_length=255, blank=True, help_text='App password for sending emails via your Gmail account')
 
     class Meta:
         db_table = 'users'

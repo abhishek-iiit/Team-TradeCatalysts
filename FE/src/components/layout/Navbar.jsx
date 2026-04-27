@@ -19,8 +19,10 @@ export default function Navbar() {
       <Link to="/campaigns" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Campaigns</Link>
       <Link to="/products" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Products</Link>
       <Link to="/ai-drafts" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">AI Drafts</Link>
+      <Link to="/inbox" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Inbox</Link>
       <div className="ml-auto flex items-center gap-3">
         <span className="text-slate-400 text-sm">{user?.email}</span>
+        <Link to="/settings" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Settings</Link>
         <button
           onClick={handleLogout}
           className="text-slate-400 hover:text-white text-sm transition-colors"
