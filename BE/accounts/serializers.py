@@ -12,17 +12,20 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class EmailSettingsSerializer(serializers.ModelSerializer):
-    """Allows the user to read/update their SMTP app password."""
+    """Allows the user to read/update their SMTP app password and CC list."""
     smtp_password = serializers.CharField(
         max_length=255, allow_blank=True, required=False,
         write_only=False,
         style={'input_type': 'password'},
     )
     has_smtp_password = serializers.SerializerMethodField()
+    cc_emails = serializers.ListField(
+        child=serializers.EmailField(), required=False, default=list,
+    )
 
     class Meta:
         model = User
-        fields = ['email', 'smtp_password', 'has_smtp_password']
+        fields = ['email', 'smtp_password', 'has_smtp_password', 'cc_emails']
         read_only_fields = ['email']
 
     def get_has_smtp_password(self, obj):

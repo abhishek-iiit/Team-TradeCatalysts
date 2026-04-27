@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { getEmailSettings, saveEmailSettings } from '../api/auth'
 
@@ -7,14 +7,51 @@ export default function SettingsPage() {
   const [password, setPassword] = useState('')
   const [saved, setSaved] = useState(false)
   const [showPassword, setShowPassword] = useState(false)
+  const [ccEmails, setCcEmails] = useState([])
+  const [ccInput, setCcInput] = useState('')
+  const [ccError, setCcError] = useState('')
 
   const { data: settings, isLoading } = useQuery({
     queryKey: ['email-settings'],
     queryFn: getEmailSettings,
   })
 
+  useEffect(() => {
+    if (settings?.cc_emails) setCcEmails(settings.cc_emails)
+  }, [settings])
+
+  function addCcEmail() {
+    const email = ccInput.trim().toLowerCase()
+    if (!email) return
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setCcError('Invalid email address')
+      return
+    }
+    if (ccEmails.includes(email)) {
+      setCcError('Already added')
+      return
+    }
+    setCcEmails((prev) => [...prev, email])
+    setCcInput('')
+    setCcError('')
+  }
+
+  function removeCcEmail(email) {
+    setCcEmails((prev) => prev.filter((e) => e !== email))
+  }
+
+  function handleCcKeyDown(e) {
+    if (e.key === 'Enter' || e.key === ',') {
+      e.preventDefault()
+      addCcEmail()
+    }
+  }
+
   const mutation = useMutation({
-    mutationFn: () => saveEmailSettings({ smtp_password: password }),
+    mutationFn: () => saveEmailSettings({
+      ...(password.trim() && { smtp_password: password }),
+      cc_emails: ccEmails,
+    }),
     onSuccess: () => {
       qc.invalidateQueries({ queryKey: ['email-settings'] })
       setPassword('')
@@ -46,6 +83,40 @@ export default function SettingsPage() {
             className="w-full border border-gray-200 bg-gray-50 rounded-lg px-3 py-2 text-sm text-gray-600 cursor-not-allowed"
           />
           <p className="text-xs text-gray-400 mt-1">This is your login email — it cannot be changed here.</p>
+        </div>
+
+        {/* CC Emails */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">CC Emails</label>
+          <p className="text-xs text-gray-400 mb-2">These addresses will be CC'd on every outbound email sent from your account.</p>
+          <div className="flex gap-2">
+            <input
+              type="email"
+              value={ccInput}
+              onChange={(e) => { setCcInput(e.target.value); setCcError('') }}
+              onKeyDown={handleCcKeyDown}
+              placeholder="colleague@company.com"
+              className="flex-1 border border-gray-300 rounded-lg px-3 py-2 text-sm"
+            />
+            <button
+              type="button"
+              onClick={addCcEmail}
+              className="border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 transition-colors"
+            >
+              Add
+            </button>
+          </div>
+          {ccError && <p className="text-xs text-red-500 mt-1">{ccError}</p>}
+          {ccEmails.length > 0 && (
+            <div className="flex flex-wrap gap-2 mt-2">
+              {ccEmails.map((email) => (
+                <span key={email} className="flex items-center gap-1.5 text-xs bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-1 rounded-full">
+                  {email}
+                  <button type="button" onClick={() => removeCcEmail(email)} className="text-indigo-400 hover:text-indigo-700 leading-none">×</button>
+                </span>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Status badge */}
@@ -124,10 +195,10 @@ export default function SettingsPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={() => mutation.mutate()}
-            disabled={!password.trim() || mutation.isPending}
+            disabled={mutation.isPending}
             className="bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white text-sm font-semibold px-5 py-2 rounded-lg transition-colors"
           >
-            {mutation.isPending ? 'Saving…' : 'Save App Password'}
+            {mutation.isPending ? 'Saving…' : 'Save Settings'}
           </button>
           {saved && <span className="text-sm text-green-600 font-medium">Saved! Emails will now be sent from {settings?.email}.</span>}
           {mutation.isError && <span className="text-sm text-red-600">Save failed. Try again.</span>}

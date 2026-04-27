@@ -124,6 +124,12 @@ class GmailSMTPSender:
             return self._user.email
         return settings.EMAIL_HOST_USER
 
+    @property
+    def _cc(self) -> list:
+        if self._user:
+            return list(getattr(self._user, 'cc_emails', None) or [])
+        return []
+
     def _get_connection(self):
         """Return an SMTP connection for this user, or None to use Django's default."""
         if self._user and getattr(self._user, 'smtp_password', ''):
@@ -187,6 +193,7 @@ class GmailSMTPSender:
             body=body,
             from_email=sender_email,
             to=[contact.email],
+            cc=self._cc,
             headers={'Message-ID': message_id},
             connection=self._get_connection(),
         )
@@ -233,6 +240,7 @@ class GmailSMTPSender:
             body=draft_content,
             from_email=self._from_email,
             to=[contact.email],
+            cc=self._cc,
             headers={'Message-ID': message_id},
             connection=self._get_connection(),
         )

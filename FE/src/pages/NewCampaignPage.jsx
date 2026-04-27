@@ -39,6 +39,12 @@ export default function NewCampaignPage() {
     )
   }
 
+  function toggleAllProducts() {
+    setSelectedProducts((prev) =>
+      prev.length === products.length ? [] : products.map((p) => p.id)
+    )
+  }
+
   function toggleCountry(code) {
     setSelectedCountries((prev) =>
       prev.includes(code) ? prev.filter((c) => c !== code) : [...prev, code]
@@ -63,6 +69,15 @@ export default function NewCampaignPage() {
     c.name.toLowerCase().includes(countrySearch.toLowerCase())
   )
 
+  const allCountriesSelected = filteredCountries.length > 0 && filteredCountries.every((c) => selectedCountries.includes(c.code))
+  const someCountriesSelected = filteredCountries.some((c) => selectedCountries.includes(c.code)) && !allCountriesSelected
+
+  function toggleAllCountries() {
+    setSelectedCountries((prev) =>
+      allCountriesSelected ? prev.filter((code) => !filteredCountries.some((c) => c.code === code)) : [...new Set([...prev, ...filteredCountries.map((c) => c.code)])]
+    )
+  }
+
   return (
     <div className="p-8 max-w-3xl mx-auto">
       <h1 className="text-2xl font-bold text-gray-900 mb-2">New Campaign</h1>
@@ -82,7 +97,20 @@ export default function NewCampaignPage() {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">Products *</label>
+            <div className="flex items-center justify-between mb-2">
+              <label className="text-sm font-medium text-gray-700">Products *</label>
+              {products.length > 0 && (
+                <label className="flex items-center gap-1.5 cursor-pointer text-xs text-gray-500 hover:text-gray-700">
+                  <input
+                    type="checkbox"
+                    checked={selectedProducts.length === products.length}
+                    onChange={toggleAllProducts}
+                    className="rounded border-gray-300"
+                  />
+                  Select all
+                </label>
+              )}
+            </div>
             {products.length === 0 ? (
               <p className="text-sm text-yellow-600">No products found. <a href="/products" className="underline">Add one first.</a></p>
             ) : (
@@ -120,7 +148,19 @@ export default function NewCampaignPage() {
         </div>
 
         <div className="bg-white border border-gray-200 rounded-xl p-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">Target Countries *</label>
+          <div className="flex items-center justify-between mb-2">
+            <label className="text-sm font-medium text-gray-700">Target Countries *</label>
+            <label className="flex items-center gap-1.5 cursor-pointer text-xs text-gray-500 hover:text-gray-700">
+              <input
+                type="checkbox"
+                checked={allCountriesSelected}
+                ref={(el) => { if (el) el.indeterminate = someCountriesSelected }}
+                onChange={toggleAllCountries}
+                className="rounded border-gray-300"
+              />
+              {allCountriesSelected ? 'Deselect all' : 'Select all'}
+            </label>
+          </div>
           <input value={countrySearch} onChange={(e) => setCountrySearch(e.target.value)}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm mb-3"
             placeholder="Search countries…" />

@@ -29,12 +29,6 @@ const ACTION_COLORS = {
   manual_takeover: 'bg-yellow-100 text-yellow-700 border-yellow-200',
 }
 
-const STAGE_COLORS = {
-  completed: 'bg-indigo-600 border-indigo-600 text-white',
-  current: 'bg-white border-indigo-500 text-indigo-600 ring-2 ring-indigo-200',
-  pending: 'bg-white border-gray-300 text-gray-400',
-}
-
 function formatDate(isoString) {
   return new Date(isoString).toLocaleString('en-IN', {
     day: '2-digit', month: 'short', year: 'numeric',
@@ -60,73 +54,25 @@ export default function FlowVisualization({ leadId }) {
 
   return (
     <div className="space-y-8">
-      {/* Stage Pipeline */}
-      <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-4">Pipeline Progress</h3>
-        <div className="flex items-center gap-0 overflow-x-auto pb-2">
-          {flow.stages.map((stage, idx) => {
-            const isLast = idx === flow.stages.length - 1
-            let colorClass = STAGE_COLORS.pending
-            if (stage.current) colorClass = STAGE_COLORS.current
-            else if (stage.completed) colorClass = STAGE_COLORS.completed
-
-            const isWon = stage.key === 'closed_won'
-            const isLost = stage.key === 'closed_lost'
-
-            return (
-              <div key={stage.key} className="flex items-center shrink-0">
-                {/* Node */}
-                <div className="flex flex-col items-center gap-1">
-                  <div
-                    className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-colors ${colorClass} ${
-                      isWon && stage.completed ? '!bg-green-600 !border-green-600 !text-white' : ''
-                    } ${
-                      isLost && stage.completed ? '!bg-red-500 !border-red-500 !text-white' : ''
-                    }`}
-                  >
-                    {stage.completed && !stage.current ? '✓' : idx + 1}
-                  </div>
-                  <span
-                    className={`text-xs text-center max-w-[72px] leading-tight ${
-                      stage.current ? 'font-semibold text-indigo-600' : 'text-gray-500'
-                    }`}
-                  >
-                    {stage.label}
-                  </span>
-                </div>
-                {/* Connector */}
-                {!isLast && (
-                  <div
-                    className={`h-0.5 w-8 mx-1 shrink-0 ${
-                      stage.completed && !stage.current ? 'bg-indigo-400' : 'bg-gray-200'
-                    }`}
-                  />
-                )}
-              </div>
-            )
-          })}
+      {/* Paused warning */}
+      {flow.auto_flow_paused && (
+        <div className="text-xs bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg px-3 py-2">
+          Auto-flow is paused for this lead — automated emails and follow-ups are suspended.
         </div>
+      )}
 
-        {/* Paused warning */}
-        {flow.auto_flow_paused && (
-          <div className="mt-3 text-xs bg-yellow-50 border border-yellow-200 text-yellow-800 rounded-lg px-3 py-2">
-            Auto-flow is paused for this lead — automated emails and follow-ups are suspended.
-          </div>
-        )}
-
-        {/* Closed banner */}
-        {(isClosedWon || isClosedLost) && (
-          <div
-            className={`mt-3 text-sm font-semibold rounded-xl px-4 py-3 text-center ${
-              isClosedWon
-                ? 'bg-green-50 border border-green-200 text-green-700'
-                : 'bg-red-50 border border-red-200 text-red-700'
-            }`}
-          >
-            {isClosedWon ? 'Deal Closed — Won' : 'Deal Closed — Lost'}
-          </div>
-        )}
-      </div>
+      {/* Closed banner */}
+      {(isClosedWon || isClosedLost) && (
+        <div
+          className={`text-sm font-semibold rounded-xl px-4 py-3 text-center ${
+            isClosedWon
+              ? 'bg-green-50 border border-green-200 text-green-700'
+              : 'bg-red-50 border border-red-200 text-red-700'
+          }`}
+        >
+          {isClosedWon ? 'Deal Closed — Won' : 'Deal Closed — Lost'}
+        </div>
+      )}
 
       {/* Timeline */}
       <div>
