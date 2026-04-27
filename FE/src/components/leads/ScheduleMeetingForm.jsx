@@ -6,7 +6,6 @@ export default function ScheduleMeetingForm({ lead, onScheduled }) {
   const qc = useQueryClient()
   const [scheduledAt, setScheduledAt] = useState('')
   const [contactId, setContactId] = useState('')
-  const [meetingLink, setMeetingLink] = useState('')
   const [notes, setNotes] = useState('')
 
   const eligibleContacts = lead.contacts?.filter((c) => c.email) || []
@@ -28,7 +27,6 @@ export default function ScheduleMeetingForm({ lead, onScheduled }) {
     mutation.mutate({
       scheduled_at: new Date(scheduledAt).toISOString(),
       contact_id: contactId || defaultContactId,
-      meeting_link: meetingLink,
       notes,
     })
   }
@@ -44,7 +42,7 @@ export default function ScheduleMeetingForm({ lead, onScheduled }) {
   if (mutation.isSuccess) {
     return (
       <div className="text-sm text-green-700 bg-green-50 border border-green-200 rounded-lg px-4 py-3">
-        Meeting scheduled. A calendar invite has been sent to the contact.
+        Meeting scheduled. A calendar invite with the meeting link has been sent to the contact.
       </div>
     )
   }
@@ -74,16 +72,6 @@ export default function ScheduleMeetingForm({ lead, onScheduled }) {
             </option>
           ))}
         </select>
-      </div>
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Meeting Link</label>
-        <input
-          type="url"
-          value={meetingLink}
-          onChange={(e) => setMeetingLink(e.target.value)}
-          placeholder="https://meet.google.com/..."
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white"
-        />
       </div>
       <div>
         <label className="block text-sm font-medium text-gray-700 mb-1">Notes</label>

@@ -85,9 +85,16 @@ def _get_product(lead):
 
 def send_intro_email_task(lead_id: str, contact_id: str) -> None:
     from leads.models import LeadAction, ActionType, LeadStage
+    from communications.models import EmailThread, ThreadType
 
     lead, contact = _get_lead_and_contact(lead_id, contact_id)
     if not lead or lead.auto_flow_paused:
+        return
+
+    # Idempotency: skip if intro already sent (protects against re-queued tasks)
+    if lead.stage != LeadStage.DISCOVERED:
+        return
+    if EmailThread.objects.filter(lead=lead, thread_type=ThreadType.INTRO).exists():
         return
 
     product = _get_product(lead)
@@ -125,9 +132,15 @@ def send_intro_email_task(lead_id: str, contact_id: str) -> None:
 
 def send_documents_task(lead_id: str, contact_id: str) -> None:
     from leads.models import LeadAction, ActionType, LeadStage
+    from communications.models import EmailThread, ThreadType
 
     lead, contact = _get_lead_and_contact(lead_id, contact_id)
     if not lead or lead.auto_flow_paused:
+        return
+
+    if lead.stage != LeadStage.INTRO_SENT:
+        return
+    if EmailThread.objects.filter(lead=lead, thread_type=ThreadType.DOCUMENTS).exists():
         return
 
     product = _get_product(lead)
@@ -165,9 +178,15 @@ def send_documents_task(lead_id: str, contact_id: str) -> None:
 
 def send_requirements_task(lead_id: str, contact_id: str) -> None:
     from leads.models import LeadAction, ActionType, LeadStage
+    from communications.models import EmailThread, ThreadType
 
     lead, contact = _get_lead_and_contact(lead_id, contact_id)
     if not lead or lead.auto_flow_paused:
+        return
+
+    if lead.stage != LeadStage.DOCUMENTS_SENT:
+        return
+    if EmailThread.objects.filter(lead=lead, thread_type=ThreadType.REQUIREMENTS).exists():
         return
 
     product = _get_product(lead)
@@ -205,9 +224,15 @@ def send_requirements_task(lead_id: str, contact_id: str) -> None:
 
 def send_pricing_email_task(lead_id: str, contact_id: str) -> None:
     from leads.models import LeadAction, ActionType, LeadStage
+    from communications.models import EmailThread, ThreadType
 
     lead, contact = _get_lead_and_contact(lead_id, contact_id)
     if not lead or lead.auto_flow_paused:
+        return
+
+    if lead.stage != LeadStage.REQUIREMENTS_ASKED:
+        return
+    if EmailThread.objects.filter(lead=lead, thread_type=ThreadType.PRICING).exists():
         return
 
     product = _get_product(lead)
@@ -245,9 +270,15 @@ def send_pricing_email_task(lead_id: str, contact_id: str) -> None:
 
 def send_pricing_followup_task(lead_id: str, contact_id: str) -> None:
     from leads.models import LeadAction, ActionType, LeadStage
+    from communications.models import EmailThread, ThreadType
 
     lead, contact = _get_lead_and_contact(lead_id, contact_id)
     if not lead or lead.auto_flow_paused:
+        return
+
+    if lead.stage != LeadStage.PRICING_SENT:
+        return
+    if EmailThread.objects.filter(lead=lead, thread_type=ThreadType.FOLLOWUP).exists():
         return
 
     product = _get_product(lead)
@@ -285,9 +316,15 @@ def send_pricing_followup_task(lead_id: str, contact_id: str) -> None:
 
 def send_meeting_task(lead_id: str, contact_id: str) -> None:
     from leads.models import LeadAction, ActionType, LeadStage
+    from communications.models import EmailThread, ThreadType
 
     lead, contact = _get_lead_and_contact(lead_id, contact_id)
     if not lead or lead.auto_flow_paused:
+        return
+
+    if lead.stage != LeadStage.PRICING_FOLLOWUP:
+        return
+    if EmailThread.objects.filter(lead=lead, thread_type=ThreadType.MEETING).exists():
         return
 
     product = _get_product(lead)
@@ -325,9 +362,15 @@ def send_meeting_task(lead_id: str, contact_id: str) -> None:
 
 def send_deal_task(lead_id: str, contact_id: str) -> None:
     from leads.models import LeadAction, ActionType, LeadStage
+    from communications.models import EmailThread, ThreadType
 
     lead, contact = _get_lead_and_contact(lead_id, contact_id)
     if not lead or lead.auto_flow_paused:
+        return
+
+    if lead.stage != LeadStage.MEETING_SENT:
+        return
+    if EmailThread.objects.filter(lead=lead, thread_type=ThreadType.DEAL).exists():
         return
 
     product = _get_product(lead)

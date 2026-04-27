@@ -48,7 +48,6 @@ class MeetingSerializer(serializers.ModelSerializer):
 class ScheduleMeetingSerializer(serializers.Serializer):
     scheduled_at = serializers.DateTimeField()
     contact_id = serializers.UUIDField()
-    meeting_link = serializers.CharField(max_length=500, required=False, default='')
     notes = serializers.CharField(required=False, default='')
 
 

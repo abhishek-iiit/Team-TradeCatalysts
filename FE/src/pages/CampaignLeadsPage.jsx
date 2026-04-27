@@ -11,7 +11,7 @@ const STAGES = [
   { key: 'discovered', label: 'Discovered' },
   { key: 'intro_sent', label: 'Intro Sent' },
   { key: 'pricing_sent', label: 'Pricing Sent' },
-  { key: 'meeting_set', label: 'Meeting Set' },
+  { key: 'meeting_sent', label: 'Meeting Set' },
   { key: 'closed_won', label: 'Won' },
   { key: 'closed_lost', label: 'Lost' },
 ]
@@ -82,7 +82,7 @@ export default function CampaignLeadsPage() {
         )}
       </div>
 
-      <EnrichmentBanner leadCount={leads.length} />
+      <EnrichmentBanner leadCount={campaign?.lead_count ?? leads.length} />
 
       <div className="flex gap-1 mb-4 border-b border-gray-200">
         {STAGES.map((s) => (

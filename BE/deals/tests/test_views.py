@@ -74,7 +74,7 @@ def test_schedule_meeting_creates_meeting_and_advances_stage(mock_create_event, 
     assert meeting.calendar_event_id == 'cal-uid-123'
     assert meeting.status == MeetingStatus.PROPOSED
     lead.refresh_from_db()
-    assert lead.stage == LeadStage.MEETING_SET
+    assert lead.stage == LeadStage.MEETING_SENT
     assert lead.actions.filter(action_type=ActionType.MEETING_SCHEDULED).exists()
 
 
@@ -128,7 +128,7 @@ def test_update_meeting_status_to_confirmed(auth_client, user, lead, contact):
 
 @pytest.mark.django_db
 def test_close_deal_won(auth_client, lead):
-    lead.stage = LeadStage.MEETING_SET
+    lead.stage = LeadStage.MEETING_SENT
     lead.save(update_fields=['stage'])
 
     resp = auth_client.post(f'/api/leads/{lead.id}/close/', {

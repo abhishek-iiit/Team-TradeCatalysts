@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useMutation } from '@tanstack/react-query'
 import { generateDraft } from '../../api/leads'
 
-const ELIGIBLE_STAGES = new Set(['intro_sent', 'pricing_sent', 'pricing_followup', 'meeting_set'])
+const ELIGIBLE_STAGES = new Set(['intro_sent', 'pricing_sent', 'pricing_followup', 'meeting_sent'])
 
 export default function GenerateDraftButton({ lead }) {
   const [done, setDone] = useState(false)

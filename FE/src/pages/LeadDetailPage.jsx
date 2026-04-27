@@ -28,7 +28,7 @@ const STAGES = [
   { value: 'closed_lost',        label: 'Closed Lost' },
 ]
 
-const DETAIL_TABS = ['Call Log', 'Emails', 'Meetings', 'Trade Report', 'Flow']
+const DETAIL_TABS = ['Emails', 'Meetings', 'Trade Report', 'Flow', 'Call Log']
 const CLOSED_STAGES = ['closed_won', 'closed_lost']
 
 export default function LeadDetailPage() {

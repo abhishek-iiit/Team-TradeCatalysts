@@ -22,7 +22,7 @@ class CalendarInviteService:
 
         ics_content = self._build_ics(event_uid, lead, contact, scheduled_at, meeting_link)
         try:
-            self._send_invite(contact, lead, ics_content)
+            self._send_invite(contact, lead, ics_content, meeting_link=meeting_link)
         except Exception:
             pass
 
@@ -31,9 +31,12 @@ class CalendarInviteService:
     def _build_ics(self, uid, lead, contact, scheduled_at, meeting_link) -> str:
         end_at = scheduled_at + timedelta(hours=1)
         fmt = '%Y%m%dT%H%M%SZ'
-        description = f'Meeting regarding {lead.company_name}'
-        if meeting_link:
-            description += f'\\nMeeting Link: {meeting_link}'
+        company = getattr(settings, 'SENDER_COMPANY_NAME', 'Elchemy')
+
+        description = (
+            f'Meeting with {company} regarding {lead.company_name}.'
+            + (f'\\nJoin: {meeting_link}' if meeting_link else '')
+        )
 
         lines = [
             'BEGIN:VCALENDAR',
@@ -42,7 +45,7 @@ class CalendarInviteService:
             'METHOD:REQUEST',
             'BEGIN:VEVENT',
             f'UID:{uid}',
-            f'SUMMARY:Meeting with {lead.company_name}',
+            f'SUMMARY:Meeting with {lead.company_name} — {company}',
             f'DESCRIPTION:{description}',
             f'DTSTART:{scheduled_at.strftime(fmt)}',
             f'DTEND:{end_at.strftime(fmt)}',
@@ -53,22 +56,25 @@ class CalendarInviteService:
             ),
             'STATUS:CONFIRMED',
             'SEQUENCE:0',
-            'END:VEVENT',
-            'END:VCALENDAR',
         ]
+        if meeting_link:
+            lines.append(f'LOCATION:{meeting_link}')
+            lines.append(f'URL:{meeting_link}')
+        lines += ['END:VEVENT', 'END:VCALENDAR']
         return '\r\n'.join(lines) + '\r\n'
 
-    def _send_invite(self, contact, lead, ics_content: str) -> None:
+    def _send_invite(self, contact, lead, ics_content: str, meeting_link: str = '') -> None:
         from django.core.mail import EmailMessage as DjangoEmailMessage
 
         company = getattr(settings, 'SENDER_COMPANY_NAME', 'Elchemy')
+        join_line = f'\nJoin the meeting: {meeting_link}\n' if meeting_link else ''
         msg = DjangoEmailMessage(
-            subject=f'Meeting Invitation: {lead.company_name}',
+            subject=f'Meeting Invitation: {lead.company_name} × {company}',
             body=(
                 f'Dear {contact.first_name},\n\n'
-                f'You are invited to a meeting with {company} '
-                f'regarding {lead.company_name}.\n\n'
-                'Please find the calendar invitation attached.\n\n'
+                f'You are invited to a meeting with {company} regarding {lead.company_name}.\n'
+                f'{join_line}\n'
+                'Please accept the calendar invitation attached to add this to your calendar.\n\n'
                 f'Best regards,\n{settings.EMAIL_HOST_USER}'
             ),
             from_email=settings.EMAIL_HOST_USER,

@@ -202,12 +202,15 @@ class LeadViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
+        import uuid as _uuid
+        meeting_link = f'https://meet.jit.si/sales-{_uuid.uuid4().hex[:10]}'
+
         calendar_service = CalendarInviteService()
         event_id = calendar_service.create_event(
             lead=lead,
             contact=contact,
             scheduled_at=data['scheduled_at'],
-            meeting_link=data.get('meeting_link', ''),
+            meeting_link=meeting_link,
         )
 
         meeting = Meeting.objects.create(
@@ -216,7 +219,7 @@ class LeadViewSet(viewsets.ModelViewSet):
             scheduled_by=request.user,
             calendar_event_id=event_id,
             scheduled_at=data['scheduled_at'],
-            meeting_link=data.get('meeting_link', ''),
+            meeting_link=meeting_link,
             notes=data.get('notes', ''),
         )
 
@@ -228,7 +231,7 @@ class LeadViewSet(viewsets.ModelViewSet):
             metadata={'meeting_id': str(meeting.id)},
         )
 
-        lead.stage = LeadStage.MEETING_SET
+        lead.stage = LeadStage.MEETING_SENT
         lead.save(update_fields=['stage', 'updated_at'])
 
         return Response(MeetingSerializer(meeting).data, status=status.HTTP_201_CREATED)
@@ -296,15 +299,19 @@ class LeadViewSet(viewsets.ModelViewSet):
         actions = lead.actions.select_related('performed_by').order_by('created_at')
 
         STAGE_ORDER = [
-            'discovered', 'intro_sent', 'pricing_sent',
-            'pricing_followup', 'meeting_set', 'closed_won', 'closed_lost',
+            'discovered', 'intro_sent', 'documents_sent', 'requirements_asked',
+            'pricing_sent', 'pricing_followup', 'meeting_sent',
+            'deal_sent', 'closed_won', 'closed_lost',
         ]
         STAGE_LABELS = {
             'discovered': 'Discovered',
             'intro_sent': 'Intro Sent',
+            'documents_sent': 'Documents Sent',
+            'requirements_asked': 'Requirements Asked',
             'pricing_sent': 'Pricing Sent',
             'pricing_followup': 'Pricing Follow-Up',
-            'meeting_set': 'Meeting Set',
+            'meeting_sent': 'Meeting Sent',
+            'deal_sent': 'Deal Sent',
             'closed_won': 'Closed Won',
             'closed_lost': 'Closed Lost',
         }
