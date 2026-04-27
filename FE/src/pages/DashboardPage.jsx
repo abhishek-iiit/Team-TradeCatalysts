@@ -4,13 +4,16 @@ import { getDashboardStats } from '../api/leads'
 import { listCampaigns } from '../api/campaigns'
 
 const STAGE_ORDER = [
-  { key: 'discovered',       label: 'Discovered',       color: 'bg-gray-400' },
-  { key: 'intro_sent',       label: 'Intro Sent',        color: 'bg-blue-400' },
-  { key: 'pricing_sent',     label: 'Pricing Sent',      color: 'bg-purple-400' },
-  { key: 'pricing_followup', label: 'Pricing Follow-Up', color: 'bg-yellow-400' },
-  { key: 'meeting_set',      label: 'Meeting Set',       color: 'bg-indigo-400' },
-  { key: 'closed_won',       label: 'Won',               color: 'bg-green-500' },
-  { key: 'closed_lost',      label: 'Lost',              color: 'bg-red-400' },
+  { key: 'discovered',         label: 'Discovered',         color: 'bg-gray-400' },
+  { key: 'intro_sent',         label: 'Intro Sent',          color: 'bg-blue-400' },
+  { key: 'documents_sent',     label: 'Documents Sent',      color: 'bg-sky-400' },
+  { key: 'requirements_asked', label: 'Requirements Asked',  color: 'bg-teal-400' },
+  { key: 'pricing_sent',       label: 'Pricing Sent',        color: 'bg-purple-400' },
+  { key: 'pricing_followup',   label: 'Pricing Follow-Up',   color: 'bg-yellow-400' },
+  { key: 'meeting_sent',       label: 'Meeting Sent',        color: 'bg-indigo-400' },
+  { key: 'deal_sent',          label: 'Deal Sent',           color: 'bg-orange-400' },
+  { key: 'closed_won',         label: 'Won',                 color: 'bg-green-500' },
+  { key: 'closed_lost',        label: 'Lost',                color: 'bg-red-400' },
 ]
 
 function StatCard({ label, value, sub, accent }) {

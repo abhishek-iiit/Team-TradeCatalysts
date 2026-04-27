@@ -12,10 +12,15 @@ const THREAD_TYPE_LABELS = {
 function DraftCard({ draft }) {
   const qc = useQueryClient()
   const [expanded, setExpanded] = useState(true)
+  const [content, setContent] = useState(draft.draft_content)
+  const [file, setFile] = useState(null)
 
   const approveMutation = useMutation({
-    mutationFn: () => approveDraft(draft.id),
-    onSuccess: () => qc.invalidateQueries({ queryKey: ['ai-drafts'] }),
+    mutationFn: () => approveDraft(draft.id, { content, file }),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['ai-drafts'] })
+      setFile(null)
+    },
   })
 
   const rejectMutation = useMutation({
@@ -46,16 +51,38 @@ function DraftCard({ draft }) {
       </div>
 
       {expanded && (
-        <div className="px-5 py-4">
-          <pre className="text-sm text-gray-700 whitespace-pre-wrap font-sans leading-relaxed bg-gray-50 rounded-lg p-4 border border-gray-100 max-h-72 overflow-y-auto">
-            {draft.draft_content}
-          </pre>
+        <div className="px-5 py-4 space-y-3">
+          <textarea
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            rows={10}
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm font-mono text-gray-700 leading-relaxed resize-y focus:outline-none focus:ring-2 focus:ring-indigo-300"
+          />
 
           {draft.context_summary && (
-            <p className="text-xs text-gray-400 mt-2 italic">{draft.context_summary}</p>
+            <p className="text-xs text-gray-400 italic">{draft.context_summary}</p>
           )}
 
-          <div className="flex items-center gap-3 mt-4">
+          <div>
+            <label className="block text-xs font-medium text-gray-600 mb-1">Attachment (optional)</label>
+            <label className="inline-flex items-center gap-2 cursor-pointer border border-gray-300 rounded-md px-3 py-1.5 text-sm text-gray-600 bg-white hover:bg-gray-50 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+              </svg>
+              {file ? file.name : 'Choose file'}
+              <input
+                type="file"
+                accept=".pdf,.doc,.docx,.png,.jpg"
+                className="hidden"
+                onChange={(e) => setFile(e.target.files[0] || null)}
+              />
+            </label>
+            {file && (
+              <span className="ml-2 text-xs text-indigo-600">{file.name}</span>
+            )}
+          </div>
+
+          <div className="flex items-center gap-3 pt-1">
             <button
               onClick={() => approveMutation.mutate()}
               disabled={isPending}
@@ -73,10 +100,10 @@ function DraftCard({ draft }) {
           </div>
 
           {approveMutation.isError && (
-            <p className="text-xs text-red-600 mt-2">Failed to send. Please try again.</p>
+            <p className="text-xs text-red-600">Failed to send. Please try again.</p>
           )}
           {rejectMutation.isError && (
-            <p className="text-xs text-red-600 mt-2">Rejection failed. Please try again.</p>
+            <p className="text-xs text-red-600">Rejection failed. Please try again.</p>
           )}
         </div>
       )}

@@ -224,7 +224,7 @@ class GmailSMTPSender:
 
         return thread
 
-    def send_draft_reply(self, thread, contact, draft_content: str) -> None:
+    def send_draft_reply(self, thread, contact, draft_content: str, attachment=None) -> None:
         """Send a reply in an existing thread."""
         message_id = f'<{uuid.uuid4()}@salescatalyst>'
 
@@ -236,6 +236,8 @@ class GmailSMTPSender:
             headers={'Message-ID': message_id},
             connection=self._get_connection(),
         )
+        if attachment:
+            django_email.attach(attachment.name, attachment.read(), attachment.content_type)
         django_email.send(fail_silently=False)
 
         EmailMessage.objects.create(

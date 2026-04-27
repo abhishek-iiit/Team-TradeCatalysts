@@ -37,8 +37,11 @@ class AIDraftViewSet(viewsets.ModelViewSet):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        sender = GmailSMTPSender()
-        sender.send_draft_reply(draft.thread, draft.thread.contact, draft.draft_content)
+        content = request.data.get('reply_content') or draft.draft_content
+        attachment = request.FILES.get('attachment')
+
+        sender = GmailSMTPSender(user=request.user)
+        sender.send_draft_reply(draft.thread, draft.thread.contact, content, attachment=attachment)
 
         draft.status = DraftStatus.SENT
         draft.reviewed_by = request.user
