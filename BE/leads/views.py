@@ -71,6 +71,92 @@ class LeadViewSet(viewsets.ModelViewSet):
         qs = lead.threads.select_related('contact').prefetch_related('messages').order_by('-created_at')
         return Response(EmailThreadSerializer(qs, many=True).data)
 
+    @action(detail=True, methods=['post'], url_path='send-intro')
+    def send_intro(self, request, pk=None):
+        from communications.tasks import async_task
+        lead = self.get_object()
+
+        if lead.stage != LeadStage.DISCOVERED:
+            return Response(
+                {'error': f'Lead must be in discovered stage, current: {lead.stage}'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        contact = (
+            lead.contacts
+            .filter(email__isnull=False)
+            .exclude(email='')
+            .order_by('-is_primary')
+            .first()
+        )
+        if not contact:
+            return Response(
+                {'error': 'No contact with email found for this lead.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        async_task('communications.tasks.send_intro_email_task', str(lead.id), str(contact.id))
+        return Response({'status': 'queued'}, status=status.HTTP_202_ACCEPTED)
+
+    @action(detail=True, methods=['post'], url_path='send-pricing')
+    def send_pricing(self, request, pk=None):
+        from communications.tasks import async_task
+        lead = self.get_object()
+
+        if lead.stage != LeadStage.INTRO_SENT:
+            return Response(
+                {'error': f'Lead must be in intro_sent stage, current: {lead.stage}'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        contact = (
+            lead.contacts
+            .filter(email__isnull=False)
+            .exclude(email='')
+            .order_by('-is_primary')
+            .first()
+        )
+        if not contact:
+            return Response(
+                {'error': 'No contact with email found for this lead.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        async_task('communications.tasks.send_pricing_email_task', str(lead.id), str(contact.id))
+        return Response({'status': 'queued'}, status=status.HTTP_202_ACCEPTED)
+
+    @action(detail=False, methods=['post'], url_path='bulk-send-intro')
+    def bulk_send_intro(self, request):
+        from communications.tasks import async_task
+        lead_ids = request.data.get('lead_ids', [])
+        if not lead_ids:
+            return Response({'error': 'lead_ids required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        queued = 0
+        for lead_id in lead_ids:
+            try:
+                lead = Lead.objects.prefetch_related('contacts').get(id=lead_id)
+            except Lead.DoesNotExist:
+                continue
+
+            if lead.stage != LeadStage.DISCOVERED:
+                continue
+
+            contact = (
+                lead.contacts
+                .filter(email__isnull=False)
+                .exclude(email='')
+                .order_by('-is_primary')
+                .first()
+            )
+            if not contact:
+                continue
+
+            async_task('communications.tasks.send_intro_email_task', str(lead.id), str(contact.id))
+            queued += 1
+
+        return Response({'queued': queued}, status=status.HTTP_202_ACCEPTED)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

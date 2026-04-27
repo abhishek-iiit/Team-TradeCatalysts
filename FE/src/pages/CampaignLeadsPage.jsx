@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useMutation } from '@tanstack/react-query'
 import { getCampaign, getCampaignLeads, exportMissingContacts } from '../api/campaigns'
+import { bulkSendIntroEmail } from '../api/leads'
 import LeadTable from '../components/leads/LeadTable'
 import EnrichmentBanner from '../components/leads/EnrichmentBanner'
 
@@ -20,6 +21,16 @@ export default function CampaignLeadsPage() {
   const navigate = useNavigate()
   const [activeStage, setActiveStage] = useState('')
   const [selected, setSelected] = useState(new Set())
+  const [bulkResult, setBulkResult] = useState(null)
+
+  const bulkMutation = useMutation({
+    mutationFn: () => bulkSendIntroEmail([...selected]),
+    onSuccess: (data) => {
+      setBulkResult(data)
+      setSelected(new Set())
+      setTimeout(() => setBulkResult(null), 4000)
+    },
+  })
 
   const { data: campaign } = useQuery({
     queryKey: ['campaign', id],
@@ -98,6 +109,16 @@ export default function CampaignLeadsPage() {
           >
             View Lead
           </button>
+          <button
+            onClick={() => bulkMutation.mutate()}
+            disabled={bulkMutation.isPending}
+            className="text-sm bg-emerald-600 text-white px-3 py-1.5 rounded-lg font-medium hover:bg-emerald-700 disabled:opacity-50"
+          >
+            {bulkMutation.isPending ? 'Sending…' : 'Send Intro Email'}
+          </button>
+          {bulkResult && (
+            <span className="text-xs text-green-700 font-medium">{bulkResult.queued} emails queued</span>
+          )}
         </div>
       )}
 

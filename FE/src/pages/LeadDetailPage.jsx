@@ -8,6 +8,7 @@ import ContactCard from '../components/leads/ContactCard'
 import TimelineTab from '../components/leads/TimelineTab'
 import CallLogTab from '../components/leads/CallLogTab'
 import EmailThreadsTab from '../components/leads/EmailThreadsTab'
+import SendEmailPanel from '../components/leads/SendEmailPanel'
 
 const STAGES = [
   { value: 'discovered',       label: 'Discovered' },
@@ -82,6 +83,7 @@ export default function LeadDetailPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
+          <SendEmailPanel lead={lead} />
           <select
             value={lead.stage}
             onChange={handleStageChange}

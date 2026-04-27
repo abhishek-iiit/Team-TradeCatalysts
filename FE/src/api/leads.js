@@ -17,3 +17,12 @@ export const getLeadThreads = (id) =>
 
 export const getDashboardStats = () =>
   api.get('/dashboard/').then((r) => r.data)
+
+export const sendIntroEmail = (id) =>
+  api.post(`/leads/${id}/send-intro/`).then((r) => r.data)
+
+export const sendPricingEmail = (id) =>
+  api.post(`/leads/${id}/send-pricing/`).then((r) => r.data)
+
+export const bulkSendIntroEmail = (leadIds) =>
+  api.post('/leads/bulk-send-intro/', { lead_ids: leadIds }).then((r) => r.data)
