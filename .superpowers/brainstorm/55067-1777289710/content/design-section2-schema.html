@@ -1,0 +1,215 @@
+<h2>Design Section 2 of 4 — Database Schema (ERD)</h2>
+<p class="subtitle">10 core tables — all with UUID PKs, TimestampedModel base</p>
+
+<style>
+.erd-wrap { display: flex; flex-direction: column; gap: 20px; margin-top: 20px; }
+.erd-row { display: flex; gap: 14px; flex-wrap: wrap; }
+.table-card { background: #fff; border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden; flex: 1; min-width: 220px; box-shadow: 0 1px 6px rgba(0,0,0,0.06); }
+.table-card.wide { min-width: 320px; }
+.table-header { padding: 10px 14px; font-weight: 800; font-size: 13px; color: #fff; display: flex; align-items: center; justify-content: space-between; }
+.table-header small { font-weight: 400; font-size: 11px; opacity: 0.85; }
+.table-body { padding: 0; }
+.field-row { display: flex; align-items: baseline; padding: 5px 14px; border-bottom: 1px solid #f1f5f9; font-size: 12px; gap: 8px; }
+.field-row:last-child { border-bottom: none; }
+.field-name { font-weight: 600; color: #1e293b; min-width: 130px; }
+.field-type { color: #64748b; font-family: monospace; font-size: 11px; }
+.field-note { color: #94a3b8; font-size: 11px; margin-left: auto; }
+.pk { color: #f59e0b; }
+.fk { color: #3b82f6; }
+.enum { color: #8b5cf6; }
+
+.th-campaign { background: #2563eb; }
+.th-product { background: #0891b2; }
+.th-lead { background: #7c3aed; }
+.th-contact { background: #059669; }
+.th-action { background: #d97706; }
+.th-email { background: #dc2626; }
+.th-msg { background: #be185d; }
+.th-draft { background: #047857; }
+.th-meeting { background: #b45309; }
+.th-deal { background: #374151; }
+
+.rel-section { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 18px; }
+.rel-section h3 { margin: 0 0 12px; font-size: 13px; font-weight: 700; color: #374151; }
+.rel-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+.rel-pill { font-size: 12px; background: #fff; border: 1px solid #e2e8f0; border-radius: 20px; padding: 4px 12px; color: #374151; }
+.rel-pill .arrow { color: #6b7280; margin: 0 4px; }
+.rel-pill .card { font-weight: 700; }
+
+.stage-section { background: #faf5ff; border: 1px solid #e9d5ff; border-radius: 10px; padding: 14px 18px; }
+.stage-section h3 { margin: 0 0 10px; font-size: 13px; font-weight: 700; color: #6d28d9; }
+.stage-flow { display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
+.stage-pill { background: #7c3aed; color: #fff; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+.stage-arrow { color: #7c3aed; font-size: 14px; }
+.stage-branch { display: flex; gap: 8px; margin-top: 8px; }
+.stage-pill.won { background: #059669; }
+.stage-pill.lost { background: #dc2626; }
+.stage-pill.pause { background: #d97706; }
+</style>
+
+<div class="erd-wrap">
+
+  <div class="erd-row">
+    <div class="table-card wide">
+      <div class="table-header th-campaign">Campaign <small>— product search session</small></div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">created_by</span><span class="field-type">FK(User)</span></div>
+        <div class="field-row"><span class="field-name fk">products</span><span class="field-type">M2M(Product)</span></div>
+        <div class="field-row"><span class="field-name">title</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">country_filters</span><span class="field-type">JSONField</span><span class="field-note">["IN","US",…]</span></div>
+        <div class="field-row"><span class="field-name">num_transactions_yr</span><span class="field-type">IntegerField</span></div>
+        <div class="field-row"><span class="field-name">brochure_pdf</span><span class="field-type">FileField</span><span class="field-note">nullable</span></div>
+        <div class="field-row"><span class="field-name enum">status</span><span class="field-type">active|paused|done</span></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header th-product">Product</div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name">name</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">hsn_code</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">cas_number</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">description</span><span class="field-type">TextField</span></div>
+        <div class="field-row"><span class="field-name">technical_specs</span><span class="field-type">JSONField</span></div>
+        <div class="field-row"><span class="field-name fk">created_by</span><span class="field-type">FK(User)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="erd-row">
+    <div class="table-card wide">
+      <div class="table-header th-lead">Lead <small>— company discovered for a campaign</small></div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">campaign</span><span class="field-type">FK(Campaign)</span></div>
+        <div class="field-row"><span class="field-name">company_name</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">company_country</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">company_website</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name enum">stage</span><span class="field-type">ENUM (7 stages)</span></div>
+        <div class="field-row"><span class="field-name">auto_flow_paused</span><span class="field-type">BooleanField</span><span class="field-note">stops automation</span></div>
+        <div class="field-row"><span class="field-name">volza_data</span><span class="field-type">JSONField</span><span class="field-note">raw API response</span></div>
+        <div class="field-row"><span class="field-name">pricing_trend</span><span class="field-type">JSONField</span></div>
+        <div class="field-row"><span class="field-name">purchase_history</span><span class="field-type">JSONField</span></div>
+        <div class="field-row"><span class="field-name">assigned_to</span><span class="field-type">FK(User, null)</span></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header th-contact">Contact <small>— decision maker</small></div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">lead</span><span class="field-type">FK(Lead)</span></div>
+        <div class="field-row"><span class="field-name">first_name</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">last_name</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">designation</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">email</span><span class="field-type">EmailField(null)</span></div>
+        <div class="field-row"><span class="field-name">phone</span><span class="field-type">CharField(null)</span></div>
+        <div class="field-row"><span class="field-name">linkedin_url</span><span class="field-type">URLField(null)</span></div>
+        <div class="field-row"><span class="field-name enum">source</span><span class="field-type">volza|lusha|manual</span></div>
+        <div class="field-row"><span class="field-name">is_primary</span><span class="field-type">BooleanField</span></div>
+        <div class="field-row"><span class="field-name">lusha_raw</span><span class="field-type">JSONField</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="erd-row">
+    <div class="table-card wide">
+      <div class="table-header th-action">LeadAction <small>— full audit trail</small></div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">lead</span><span class="field-type">FK(Lead)</span></div>
+        <div class="field-row"><span class="field-name fk">performed_by</span><span class="field-type">FK(User, null)</span><span class="field-note">null = system</span></div>
+        <div class="field-row"><span class="field-name enum">action_type</span><span class="field-type">intro_email | call | pricing_email | meeting | note | ai_draft | deal_closed | manual_takeover</span></div>
+        <div class="field-row"><span class="field-name">notes</span><span class="field-type">TextField</span></div>
+        <div class="field-row"><span class="field-name">metadata</span><span class="field-type">JSONField</span><span class="field-note">email body, call notes…</span></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header th-draft">AIDraft <small>— Gemini email draft</small></div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">lead</span><span class="field-type">FK(Lead)</span></div>
+        <div class="field-row"><span class="field-name fk">thread</span><span class="field-type">FK(EmailThread)</span></div>
+        <div class="field-row"><span class="field-name">draft_content</span><span class="field-type">TextField</span></div>
+        <div class="field-row"><span class="field-name">context_summary</span><span class="field-type">TextField</span></div>
+        <div class="field-row"><span class="field-name enum">status</span><span class="field-type">pending|approved|rejected|sent</span></div>
+        <div class="field-row"><span class="field-name fk">reviewed_by</span><span class="field-type">FK(User, null)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="erd-row">
+    <div class="table-card">
+      <div class="table-header th-email">EmailThread</div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">lead</span><span class="field-type">FK(Lead)</span></div>
+        <div class="field-row"><span class="field-name fk">contact</span><span class="field-type">FK(Contact)</span></div>
+        <div class="field-row"><span class="field-name">subject</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name enum">thread_type</span><span class="field-type">intro|pricing|followup|negotiation</span></div>
+        <div class="field-row"><span class="field-name">gmail_thread_id</span><span class="field-type">CharField</span></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header th-msg">EmailMessage</div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">thread</span><span class="field-type">FK(EmailThread)</span></div>
+        <div class="field-row"><span class="field-name enum">direction</span><span class="field-type">outbound|inbound</span></div>
+        <div class="field-row"><span class="field-name">body_html</span><span class="field-type">TextField</span></div>
+        <div class="field-row"><span class="field-name">sent_at</span><span class="field-type">DateTimeField</span></div>
+        <div class="field-row"><span class="field-name">gmail_message_id</span><span class="field-type">CharField</span></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header th-meeting">Meeting</div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">lead</span><span class="field-type">FK(Lead)</span></div>
+        <div class="field-row"><span class="field-name fk">contact</span><span class="field-type">FK(Contact)</span></div>
+        <div class="field-row"><span class="field-name">calendar_event_id</span><span class="field-type">CharField</span></div>
+        <div class="field-row"><span class="field-name">scheduled_at</span><span class="field-type">DateTimeField</span></div>
+        <div class="field-row"><span class="field-name enum">status</span><span class="field-type">proposed|confirmed|done|cancelled</span></div>
+      </div>
+    </div>
+
+    <div class="table-card">
+      <div class="table-header th-deal">Deal</div>
+      <div class="table-body">
+        <div class="field-row"><span class="field-name pk">id</span><span class="field-type">UUID PK</span></div>
+        <div class="field-row"><span class="field-name fk">lead</span><span class="field-type">FK(Lead) OneToOne</span></div>
+        <div class="field-row"><span class="field-name enum">outcome</span><span class="field-type">won | lost</span></div>
+        <div class="field-row"><span class="field-name fk">closed_by</span><span class="field-type">FK(User)</span></div>
+        <div class="field-row"><span class="field-name">remarks</span><span class="field-type">TextField</span></div>
+        <div class="field-row"><span class="field-name">deal_value</span><span class="field-type">DecimalField(null)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-section">
+    <h3>Lead.stage — State Machine</h3>
+    <div class="stage-flow">
+      <span class="stage-pill">discovered</span>
+      <span class="stage-arrow">→</span>
+      <span class="stage-pill">intro_sent</span>
+      <span class="stage-arrow">→</span>
+      <span class="stage-pill">pricing_sent</span>
+      <span class="stage-arrow">→</span>
+      <span class="stage-pill">pricing_followup</span>
+      <span class="stage-arrow">→</span>
+      <span class="stage-pill">meeting_set</span>
+      <span class="stage-arrow">→</span>
+    </div>
+    <div class="stage-branch">
+      <span class="stage-pill won">closed_won</span>
+      <span class="stage-pill lost">closed_lost</span>
+      <span class="stage-pill pause">⏸ auto_flow_paused (any stage)</span>
+    </div>
+  </div>
+
+</div>

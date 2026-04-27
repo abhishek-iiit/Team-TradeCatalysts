@@ -1,0 +1,127 @@
+<h2>Design Section 1 of 4 — System Architecture</h2>
+<p class="subtitle">Full stack overview: how all services connect locally</p>
+
+<style>
+.arch-wrap { margin-top: 20px; display: flex; flex-direction: column; gap: 16px; }
+.layer { border-radius: 10px; overflow: hidden; border: 1px solid #e5e7eb; }
+.layer-header { padding: 10px 18px; font-weight: 700; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+.layer-body { display: flex; gap: 10px; padding: 14px 16px; background: #fff; flex-wrap: wrap; }
+.box { border-radius: 8px; padding: 10px 14px; font-size: 13px; font-weight: 600; min-width: 120px; text-align: center; }
+.arrow-row { text-align: center; font-size: 13px; color: #6b7280; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.arrow-row .line { flex: 1; height: 1px; background: #e5e7eb; max-width: 80px; }
+
+/* Layer colours */
+.fe-layer .layer-header { background: #fce7f3; color: #9d174d; }
+.be-layer .layer-header { background: #dbeafe; color: #1e40af; }
+.db-layer .layer-header { background: #d1fae5; color: #065f46; }
+.ext-layer .layer-header { background: #fef3c7; color: #92400e; }
+.task-layer .layer-header { background: #ede9fe; color: #5b21b6; }
+
+.box.react { background: #fce7f3; color: #9d174d; border: 1px solid #fbcfe8; }
+.box.django { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+.box.pg { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.box.ext { background: #fef3c7; color: #92400e; border: 1px solid #fde68a; }
+.box.q2 { background: #ede9fe; color: #5b21b6; border: 1px solid #ddd6fe; }
+.box.gemini { background: #f0fdf4; color: #14532d; border: 1px solid #bbf7d0; }
+
+.port-badge { font-size: 11px; font-weight: 400; color: #6b7280; margin-left: 4px; }
+.flow-note { font-size: 12px; color: #6b7280; font-style: italic; text-align: center; margin: 4px 0; }
+
+.stack-detail { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 14px 18px; }
+.stack-detail table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.stack-detail td { padding: 6px 10px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+.stack-detail td:first-child { font-weight: 700; color: #374151; width: 160px; }
+.stack-detail td:last-child { color: #555; }
+.stack-detail tr:last-child td { border-bottom: none; }
+</style>
+
+<div class="arch-wrap">
+
+  <div class="layer fe-layer">
+    <div class="layer-header">Frontend — Browser</div>
+    <div class="layer-body">
+      <div class="box react">React 19 + Vite<span class="port-badge">:5173</span></div>
+      <div class="box react">React Router v6</div>
+      <div class="box react">TanStack Query</div>
+      <div class="box react">Tailwind CSS</div>
+      <div class="box react">Axios (API client)</div>
+    </div>
+  </div>
+
+  <div class="arrow-row">
+    <div class="line"></div>
+    JWT Bearer Token — REST API calls over HTTP
+    <div class="line"></div>
+  </div>
+
+  <div class="layer be-layer">
+    <div class="layer-header">Backend — Django 5 + DRF</div>
+    <div class="layer-body">
+      <div class="box django">accounts app<br><small style="font-weight:400;font-size:11px">Auth + Users</small></div>
+      <div class="box django">leads app<br><small style="font-weight:400;font-size:11px">Discovery + Pipeline</small></div>
+      <div class="box django">communications app<br><small style="font-weight:400;font-size:11px">Email + Calls</small></div>
+      <div class="box django">campaigns app<br><small style="font-weight:400;font-size:11px">Search + Brochure</small></div>
+      <div class="box django">ai_assistant app<br><small style="font-weight:400;font-size:11px">Gemini + Drafts</small></div>
+      <div class="box django">deals app<br><small style="font-weight:400;font-size:11px">Close + Reports</small></div>
+    </div>
+  </div>
+
+  <div class="arrow-row">
+    <div class="line"></div>
+    Django ORM — reads/writes
+    <div class="line"></div>
+  </div>
+
+  <div class="layer db-layer">
+    <div class="layer-header">Data Layer — PostgreSQL 16</div>
+    <div class="layer-body">
+      <div class="box pg">PostgreSQL<span class="port-badge">:5432</span></div>
+      <div class="box pg">Django-Q2 ORM Broker<br><small style="font-weight:400;font-size:11px">Scheduled tasks in PG</small></div>
+    </div>
+  </div>
+
+  <div class="arrow-row">
+    <div class="line"></div>
+    Django-Q2 workers — async jobs
+    <div class="line"></div>
+  </div>
+
+  <div class="layer task-layer">
+    <div class="layer-header">Background Workers — Django-Q2</div>
+    <div class="layer-body">
+      <div class="box q2">Follow-up Email Scheduler<br><small style="font-weight:400;font-size:11px">4–5 day trigger</small></div>
+      <div class="box q2">PDF Brochure Generator<br><small style="font-weight:400;font-size:11px">WeasyPrint async</small></div>
+      <div class="box q2">Volza + LUSHA Enrichment<br><small style="font-weight:400;font-size:11px">Async API calls</small></div>
+    </div>
+  </div>
+
+  <div class="arrow-row">
+    <div class="line"></div>
+    HTTPS API calls
+    <div class="line"></div>
+  </div>
+
+  <div class="layer ext-layer">
+    <div class="layer-header">External Services</div>
+    <div class="layer-body">
+      <div class="box ext">Volza API<br><small style="font-weight:400;font-size:11px">Lead discovery</small></div>
+      <div class="box ext">LUSHA API<br><small style="font-weight:400;font-size:11px">Contact enrichment</small></div>
+      <div class="box ext">Gmail SMTP<br><small style="font-weight:400;font-size:11px">Email sending</small></div>
+      <div class="box gemini">Gemini API<br><small style="font-weight:400;font-size:11px">AI email drafts</small></div>
+      <div class="box ext">Google Calendar API<br><small style="font-weight:400;font-size:11px">Meeting scheduling</small></div>
+    </div>
+  </div>
+
+</div>
+
+<br>
+<div class="stack-detail">
+  <table>
+    <tr><td>Local ports</td><td>FE: localhost:5173 &nbsp;|&nbsp; BE: localhost:8000 &nbsp;|&nbsp; PG: localhost:5432</td></tr>
+    <tr><td>FE → BE auth</td><td>JWT (djangorestframework-simplejwt) — access token 15min, refresh token 7 days</td></tr>
+    <tr><td>PDF generation</td><td>WeasyPrint — Django renders HTML template → PDF bytes → attach to email</td></tr>
+    <tr><td>Task scheduling</td><td>Django-Q2 with ORM broker — qcluster runs as separate process</td></tr>
+    <tr><td>Frontend state</td><td>TanStack Query for server state, React context for auth token</td></tr>
+    <tr><td>Styling</td><td>Tailwind CSS v4 + shadcn/ui components</td></tr>
+  </table>
+</div>

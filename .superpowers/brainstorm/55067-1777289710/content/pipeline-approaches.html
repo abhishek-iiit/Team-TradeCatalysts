@@ -1,0 +1,98 @@
+<h2>Core Architecture: Sales Pipeline State Model</h2>
+<p class="subtitle">This shapes the entire database design. Pick the model that fits best.</p>
+
+<style>
+.approach-grid { display: flex; flex-direction: column; gap: 20px; margin-top: 24px; }
+.approach-card { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.09); }
+.approach-header { display: flex; align-items: center; gap: 14px; padding: 16px 20px; color: #fff; }
+.approach-header .badge { font-size: 13px; font-weight: 800; background: rgba(255,255,255,0.2); padding: 4px 10px; border-radius: 20px; }
+.approach-header h3 { margin: 0; font-size: 17px; font-weight: 700; }
+.approach-body { background: #fff; padding: 16px 20px; border: 1px solid #e5e7eb; border-top: none; }
+.approach-body p { margin: 0 0 12px; font-size: 13px; color: #444; line-height: 1.6; }
+.db-model { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; margin-bottom: 12px; font-family: monospace; font-size: 12px; color: #1e293b; line-height: 1.8; }
+.db-model .table-name { font-weight: 800; color: #2563eb; font-size: 13px; margin-bottom: 4px; }
+.pros-cons { display: flex; gap: 12px; }
+.pros, .cons { flex: 1; border-radius: 6px; padding: 10px 12px; }
+.pros { background: #f0fdf4; }
+.cons { background: #fef2f2; }
+.pros h4 { color: #15803d; font-size: 12px; margin: 0 0 6px; }
+.cons h4 { color: #dc2626; font-size: 12px; margin: 0 0 6px; }
+.pros li, .cons li { font-size: 12px; color: #444; margin-bottom: 3px; }
+.rec-badge { display: inline-flex; align-items: center; gap: 6px; background: #fef9c3; border: 1px solid #fde047; color: #713f12; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 20px; margin-bottom: 10px; }
+.approach-header.a { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+.approach-header.b { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+.approach-header.c { background: linear-gradient(135deg, #10b981, #047857); }
+</style>
+
+<div class="approach-grid">
+
+  <div class="approach-card">
+    <div class="approach-header a">
+      <span class="badge">A</span>
+      <h3>Simple Status Field</h3>
+    </div>
+    <div class="approach-body">
+      <p>Each lead has a single <code>status</code> enum field that gets updated as it moves through the pipeline. Fast to query, easy to filter.</p>
+      <div class="db-model">
+        <div class="table-name">Lead</div>
+        status = ENUM(discovered, intro_emailed, intro_called,<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;pricing_emailed, meeting_set, closed_won, closed_lost)<br>
+        last_action_at = DateTimeField
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Simple queries</li><li>Easy dashboard filters</li><li>Fast to build</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>No history of past states</li><li>Can't reconstruct what happened</li><li>Hard to show journey flowchart</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="approach-card">
+    <div class="approach-header b">
+      <span class="badge">B</span>
+      <h3>Event-Sourced Pipeline</h3>
+    </div>
+    <div class="approach-body">
+      <p>No status field on the Lead. Instead, every action is recorded as an immutable Event. The current state is derived by replaying events.</p>
+      <div class="db-model">
+        <div class="table-name">LeadEvent</div>
+        lead = FK(Lead)<br>
+        event_type = ENUM(intro_email_sent, call_made, pricing_sent, ...)<br>
+        payload = JSONField &nbsp;# email body, call notes, etc.<br>
+        created_at = DateTimeField
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Full audit trail</li><li>Perfect for flow chart</li><li>Never lose any data</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Complex state derivation</li><li>Slower dashboard queries</li><li>Overkill for internal tool</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="approach-card">
+    <div class="approach-header c">
+      <span class="badge">C ★ Recommended</span>
+      <h3>Stage + Action Log Hybrid</h3>
+    </div>
+    <div class="approach-body">
+      <div class="rec-badge">★ My recommendation — best of both worlds</div>
+      <p>Lead has a <code>stage</code> field for instant dashboard queries. Every action is also logged to <code>LeadAction</code> for history, call notes, email records, and the journey flowchart.</p>
+      <div class="db-model">
+        <div class="table-name">Lead</div>
+        stage = ENUM(discovered → intro_sent → pricing_sent → meeting_set → closed)<br>
+        auto_flow_paused = BooleanField &nbsp;# the "stop flow" flag<br>
+        <br>
+        <div class="table-name">LeadAction</div>
+        lead = FK(Lead)<br>
+        action_type = ENUM(intro_email, follow_up_call, pricing_email, meeting, note)<br>
+        performed_by = FK(User) &nbsp;# or "system" for automated<br>
+        notes = TextField<br>
+        metadata = JSONField &nbsp;# email body, API response, etc.<br>
+        created_at = DateTimeField
+      </div>
+      <div class="pros-cons">
+        <div class="pros"><h4>Pros</h4><ul><li>Fast dashboard queries (stage field)</li><li>Full history for flow chart</li><li>Stores call notes + email content</li><li>Simple to implement</li></ul></div>
+        <div class="cons"><h4>Cons</h4><ul><li>Stage can drift if not updated carefully</li><li>Two places to keep in sync</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+</div>

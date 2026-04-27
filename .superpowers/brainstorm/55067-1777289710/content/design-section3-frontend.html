@@ -1,0 +1,247 @@
+<h2>Design Section 3 of 4 — Frontend Layout & Pages</h2>
+<p class="subtitle">React Router pages, navigation structure, and key UI components per page</p>
+
+<style>
+* { box-sizing: border-box; }
+.nav-mockup { background: #1e293b; border-radius: 10px; padding: 0 20px; display: flex; align-items: center; gap: 0; height: 52px; margin-bottom: 20px; }
+.nav-logo { color: #fff; font-weight: 800; font-size: 15px; margin-right: 28px; letter-spacing: -0.5px; }
+.nav-logo span { color: #6366f1; }
+.nav-item { color: #94a3b8; font-size: 13px; font-weight: 500; padding: 0 14px; height: 100%; display: flex; align-items: center; border-bottom: 2px solid transparent; cursor: pointer; }
+.nav-item.active { color: #fff; border-bottom-color: #6366f1; }
+.nav-spacer { flex: 1; }
+.nav-user { color: #94a3b8; font-size: 12px; display: flex; align-items: center; gap: 8px; }
+.nav-avatar { width: 28px; height: 28px; border-radius: 50%; background: #6366f1; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; font-weight: 700; }
+
+.pages-grid { display: flex; flex-direction: column; gap: 14px; }
+.page-card { border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden; }
+.page-header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
+.route-badge { font-family: monospace; font-size: 12px; background: #1e293b; color: #a5f3fc; padding: 3px 10px; border-radius: 6px; }
+.page-title { font-weight: 700; font-size: 14px; color: #111; }
+.page-who { font-size: 11px; color: #6b7280; margin-left: auto; background: #f1f5f9; padding: 2px 8px; border-radius: 10px; }
+.page-body { display: flex; gap: 0; }
+.page-desc { flex: 1; padding: 12px 16px; }
+.page-desc ul { margin: 0; padding: 0 0 0 16px; }
+.page-desc li { font-size: 12px; color: #444; margin-bottom: 4px; line-height: 1.5; }
+.page-wireframe { width: 260px; min-width: 260px; padding: 12px; background: #f8fafc; border-left: 1px solid #e2e8f0; }
+
+/* mini wireframe elements */
+.wf-header { background: #e2e8f0; height: 18px; border-radius: 4px; margin-bottom: 6px; }
+.wf-row { display: flex; gap: 6px; margin-bottom: 6px; }
+.wf-block { background: #e2e8f0; border-radius: 4px; }
+.wf-btn { background: #6366f1; border-radius: 4px; height: 20px; }
+.wf-tag { background: #dbeafe; border-radius: 10px; height: 16px; }
+.wf-card { background: #fff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 6px 8px; margin-bottom: 6px; }
+.wf-card .wf-line { background: #e2e8f0; height: 8px; border-radius: 3px; margin-bottom: 4px; }
+.wf-card .wf-line.short { width: 60%; }
+.wf-card .wf-line.xs { width: 40%; }
+.wf-progress { background: #e2e8f0; height: 8px; border-radius: 4px; overflow: hidden; margin-bottom: 4px; }
+.wf-progress-fill { background: #6366f1; height: 100%; border-radius: 4px; }
+.wf-table-row { display: flex; gap: 4px; margin-bottom: 4px; align-items: center; }
+.wf-check { width: 12px; height: 12px; min-width: 12px; border: 1.5px solid #94a3b8; border-radius: 3px; }
+.wf-check.checked { background: #6366f1; border-color: #6366f1; }
+.wf-stat { background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 8px; text-align: center; flex: 1; }
+.wf-stat .wf-num { font-size: 18px; font-weight: 800; color: #6366f1; }
+.wf-stat .wf-label { font-size: 9px; color: #94a3b8; }
+</style>
+
+<div class="nav-mockup">
+  <div class="nav-logo">Sales<span>Catalyst</span></div>
+  <div class="nav-item">Dashboard</div>
+  <div class="nav-item active">Campaigns</div>
+  <div class="nav-item">Leads</div>
+  <div class="nav-item">Products</div>
+  <div class="nav-spacer"></div>
+  <div class="nav-user"><div class="nav-avatar">AJ</div> Abhishek</div>
+</div>
+
+<div class="pages-grid">
+
+  <div class="page-card">
+    <div class="page-header">
+      <span class="route-badge">/dashboard</span>
+      <span class="page-title">Overview Dashboard</span>
+      <span class="page-who">All users</span>
+    </div>
+    <div class="page-body">
+      <div class="page-desc">
+        <ul>
+          <li>Stat cards: Active campaigns, Total leads, Emails sent, Deals closed (won/lost)</li>
+          <li>Pipeline funnel: count of leads at each stage</li>
+          <li>Recent activity feed (last 10 LeadActions)</li>
+          <li>Leads needing attention: no reply > 4 days, manual takeover flagged</li>
+        </ul>
+      </div>
+      <div class="page-wireframe">
+        <div class="wf-row">
+          <div class="wf-stat"><div class="wf-num">12</div><div class="wf-label">Active Campaigns</div></div>
+          <div class="wf-stat"><div class="wf-num">84</div><div class="wf-label">Total Leads</div></div>
+          <div class="wf-stat"><div class="wf-num">6</div><div class="wf-label">Deals Won</div></div>
+        </div>
+        <div class="wf-block" style="height:60px;width:100%;background:#f1f5f9;border-radius:6px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;"><span style="font-size:10px;color:#94a3b8">Pipeline Funnel</span></div>
+        <div class="wf-card"><div class="wf-line"></div><div class="wf-line short"></div></div>
+        <div class="wf-card"><div class="wf-line"></div><div class="wf-line short"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <div class="page-header">
+      <span class="route-badge">/campaigns/new</span>
+      <span class="page-title">New Campaign — Product Search Form</span>
+      <span class="page-who">Internal team</span>
+    </div>
+    <div class="page-body">
+      <div class="page-desc">
+        <ul>
+          <li>Multi-select product dropdown (searchable, shows HSN + CAS inline)</li>
+          <li>HSN Code + CAS Number (auto-filled from product selection, editable)</li>
+          <li>No. of transactions per year (number input)</li>
+          <li>Country checklist with search filter (multi-select)</li>
+          <li>"Search Leads" button → triggers Volza API → Django-Q2 async job</li>
+          <li>Loading state while enrichment runs — shows progress spinner</li>
+        </ul>
+      </div>
+      <div class="page-wireframe">
+        <div class="wf-header"></div>
+        <div class="wf-block" style="height:28px;width:100%;margin-bottom:6px;border-radius:4px;"></div>
+        <div class="wf-row">
+          <div class="wf-block" style="flex:1;height:24px;border-radius:4px;"></div>
+          <div class="wf-block" style="flex:1;height:24px;border-radius:4px;"></div>
+        </div>
+        <div class="wf-block" style="height:24px;width:60%;margin:6px 0;border-radius:4px;"></div>
+        <div class="wf-block" style="height:50px;width:100%;margin-bottom:8px;border-radius:4px;background:#f1f5f9;"></div>
+        <div class="wf-btn" style="width:100%;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <div class="page-header">
+      <span class="route-badge">/campaigns/:id/leads</span>
+      <span class="page-title">Campaign Lead List</span>
+      <span class="page-who">Internal team</span>
+    </div>
+    <div class="page-body">
+      <div class="page-desc">
+        <ul>
+          <li>Table with checkboxes — SELECT ALL + individual select</li>
+          <li>Columns: Company, Country, Stage badge, Primary contact (email/phone), Last action date</li>
+          <li>Stage filter tabs across top (All / Discovered / Intro Sent / Pricing / Meeting / Closed)</li>
+          <li>Bulk actions bar on selection: "Send Intro Email", "Export Missing Contacts CSV"</li>
+          <li>Click row → opens Lead Detail drawer/sidebar</li>
+          <li>Missing contact badge (red) if no email AND no phone</li>
+        </ul>
+      </div>
+      <div class="page-wireframe">
+        <div class="wf-row" style="margin-bottom:8px;">
+          <div class="wf-tag" style="width:40px;"></div>
+          <div class="wf-tag" style="width:55px;"></div>
+          <div class="wf-tag" style="width:48px;"></div>
+        </div>
+        <div class="wf-table-row"><div class="wf-check checked"></div><div class="wf-block" style="flex:1;height:8px;border-radius:3px;"></div></div>
+        <div class="wf-table-row"><div class="wf-check checked"></div><div class="wf-block" style="flex:1;height:8px;border-radius:3px;"></div></div>
+        <div class="wf-table-row"><div class="wf-check"></div><div class="wf-block" style="flex:1;height:8px;border-radius:3px;"></div></div>
+        <div class="wf-table-row"><div class="wf-check"></div><div class="wf-block" style="flex:1;height:8px;border-radius:3px;"></div></div>
+        <div class="wf-btn" style="width:100%;margin-top:8px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <div class="page-header">
+      <span class="route-badge">/leads/:id</span>
+      <span class="page-title">Lead Detail — Customer Dashboard</span>
+      <span class="page-who">Internal team</span>
+    </div>
+    <div class="page-body">
+      <div class="page-desc">
+        <ul>
+          <li>Progress bar across top showing current stage (7 steps)</li>
+          <li>Company info card (from Volza) + Pricing trend + Purchase history</li>
+          <li>Contact cards — all contacts with email/phone, primary badge</li>
+          <li><strong>Email tab</strong>: full thread history (in + out), "Send Email" button, AI draft panel</li>
+          <li><strong>Call tab</strong>: chronological call log, "Log Call" button with notes field</li>
+          <li><strong>Timeline tab</strong>: all LeadActions in order — the journey flowchart</li>
+          <li>Pause automation toggle (auto_flow_paused boolean)</li>
+          <li>"Close Deal" button → modal with won/lost + remarks</li>
+        </ul>
+      </div>
+      <div class="page-wireframe">
+        <div class="wf-progress" style="margin-bottom:8px;"><div class="wf-progress-fill" style="width:57%"></div></div>
+        <div class="wf-card"><div class="wf-line"></div><div class="wf-line short"></div><div class="wf-line xs"></div></div>
+        <div class="wf-row">
+          <div class="wf-tag" style="width:40px;height:22px;border-radius:6px;"></div>
+          <div class="wf-tag" style="width:36px;height:22px;border-radius:6px;background:#fce7f3;"></div>
+          <div class="wf-tag" style="width:52px;height:22px;border-radius:6px;background:#d1fae5;"></div>
+        </div>
+        <div class="wf-card" style="margin-top:6px;"><div class="wf-line"></div><div class="wf-line short"></div></div>
+        <div class="wf-card"><div class="wf-line"></div><div class="wf-line short"></div></div>
+        <div class="wf-btn" style="width:100%;margin-top:6px;background:#dc2626;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <div class="page-header">
+      <span class="route-badge">/products</span>
+      <span class="page-title">Products — Manage & Upload Brochures</span>
+      <span class="page-who">Internal team</span>
+    </div>
+    <div class="page-body">
+      <div class="page-desc">
+        <ul>
+          <li>Product list: name, HSN, CAS, brochure status (uploaded / missing)</li>
+          <li>"Add Product" form: name, HSN code, CAS number, description, technical specs</li>
+          <li>Brochure upload: drag-and-drop PDF upload per product</li>
+          <li>Preview brochure PDF inline before confirming</li>
+          <li>Edit / delete product</li>
+        </ul>
+      </div>
+      <div class="page-wireframe">
+        <div class="wf-header"></div>
+        <div class="wf-card"><div class="wf-line"></div><div class="wf-row"><div class="wf-line short" style="height:6px;flex:1"></div><div class="wf-tag" style="width:30px;height:14px;"></div></div></div>
+        <div class="wf-card"><div class="wf-line"></div><div class="wf-row"><div class="wf-line short" style="height:6px;flex:1"></div><div class="wf-tag" style="width:30px;height:14px;background:#fef9c3;"></div></div></div>
+        <div class="wf-btn" style="width:120px;margin-top:8px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-card">
+    <div class="page-header">
+      <span class="route-badge">/ai-drafts</span>
+      <span class="page-title">AI Draft Approval Queue</span>
+      <span class="page-who">Internal team</span>
+    </div>
+    <div class="page-body">
+      <div class="page-desc">
+        <ul>
+          <li>List of all pending AI email drafts awaiting review</li>
+          <li>Each card shows: lead company, original customer email, Gemini draft response</li>
+          <li>Inline edit the draft before approving</li>
+          <li>"Approve & Send" → sends via Gmail SMTP, logs action</li>
+          <li>"Reject" → discards draft, optionally add note why</li>
+          <li>Badge count on nav item showing pending count</li>
+        </ul>
+      </div>
+      <div class="page-wireframe">
+        <div class="wf-card">
+          <div class="wf-line"></div>
+          <div class="wf-block" style="height:36px;width:100%;border-radius:4px;margin:4px 0;"></div>
+          <div class="wf-row">
+            <div class="wf-btn" style="flex:1;background:#059669;"></div>
+            <div class="wf-btn" style="flex:1;background:#dc2626;"></div>
+          </div>
+        </div>
+        <div class="wf-card">
+          <div class="wf-line"></div>
+          <div class="wf-block" style="height:36px;width:100%;border-radius:4px;margin:4px 0;"></div>
+          <div class="wf-row">
+            <div class="wf-btn" style="flex:1;background:#059669;"></div>
+            <div class="wf-btn" style="flex:1;background:#dc2626;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

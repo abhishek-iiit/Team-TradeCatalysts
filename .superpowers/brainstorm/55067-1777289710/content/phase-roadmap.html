@@ -1,0 +1,125 @@
+<h2>SalesCatalyst — Build Roadmap</h2>
+<p class="subtitle">8 phases, built in dependency order. Each is independently usable.</p>
+
+<style>
+.roadmap { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
+.phase-row { display: flex; align-items: stretch; gap: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.phase-num { background: #1a1a2e; color: #fff; font-size: 22px; font-weight: 800; width: 56px; min-width: 56px; display: flex; align-items: center; justify-content: center; }
+.phase-body { flex: 1; background: #fff; padding: 14px 18px; border: 1px solid #e5e7eb; border-left: none; }
+.phase-body h3 { margin: 0 0 4px; font-size: 15px; font-weight: 700; color: #111; }
+.phase-body p { margin: 0; font-size: 13px; color: #555; }
+.phase-tags { display: flex; gap: 6px; margin-top: 8px; flex-wrap: wrap; }
+.tag { font-size: 11px; padding: 2px 8px; border-radius: 20px; font-weight: 600; }
+.tag.be { background: #dbeafe; color: #1d4ed8; }
+.tag.fe { background: #fce7f3; color: #9d174d; }
+.tag.api { background: #d1fae5; color: #065f46; }
+.tag.ai { background: #ede9fe; color: #5b21b6; }
+.phase-num.p1 { background: #2563eb; }
+.phase-num.p2 { background: #7c3aed; }
+.phase-num.p3 { background: #0891b2; }
+.phase-num.p4 { background: #059669; }
+.phase-num.p5 { background: #d97706; }
+.phase-num.p6 { background: #dc2626; }
+.phase-num.p7 { background: #0f766e; }
+.phase-num.adhoc { background: #374151; }
+.arrow { text-align: center; font-size: 18px; color: #9ca3af; margin: -4px 0; }
+.divider { display: flex; align-items: center; gap: 12px; margin: 8px 0; }
+.divider-line { flex: 1; height: 1px; background: #e5e7eb; }
+.divider-label { font-size: 11px; font-weight: 700; color: #9ca3af; letter-spacing: 0.05em; text-transform: uppercase; }
+</style>
+
+<div class="roadmap">
+  <div class="phase-row">
+    <div class="phase-num p1">1</div>
+    <div class="phase-body">
+      <h3>Core Platform + Auth + DB Schema</h3>
+      <p>Django project setup, PostgreSQL schema design, JWT auth, user management, CORS config</p>
+      <div class="phase-tags">
+        <span class="tag be">Django</span><span class="tag be">PostgreSQL</span><span class="tag fe">Auth UI</span>
+      </div>
+    </div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="phase-row">
+    <div class="phase-num p2">2</div>
+    <div class="phase-body">
+      <h3>Lead Discovery Engine</h3>
+      <p>Product search form (name, HSN, CAS, country filters) → Volza API → LinkedIn/LUSHA fallback → store leads</p>
+      <div class="phase-tags">
+        <span class="tag api">Volza API</span><span class="tag api">LUSHA API</span><span class="tag fe">Search UI</span>
+      </div>
+    </div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="phase-row">
+    <div class="phase-num p3">3</div>
+    <div class="phase-body">
+      <h3>Customer Dashboard + Pipeline</h3>
+      <p>Lead list with checkboxes, progress bar per lead, contact cards, SELECT ALL, spreadsheet export for missing contacts</p>
+      <div class="phase-tags">
+        <span class="tag fe">Dashboard UI</span><span class="tag be">Pipeline API</span>
+      </div>
+    </div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="phase-row">
+    <div class="phase-num p4">4</div>
+    <div class="phase-body">
+      <h3>Communication Engine</h3>
+      <p>Brochure email send, pricing follow-up email (4–5 day trigger), call logging + notes, action history per lead</p>
+      <div class="phase-tags">
+        <span class="tag api">Email API</span><span class="tag fe">Email/Call UI</span><span class="tag be">Scheduler</span>
+      </div>
+    </div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="phase-row">
+    <div class="phase-num p5">5</div>
+    <div class="phase-body">
+      <h3>AI Email Assistant</h3>
+      <p>AI drafts reply based on conversation context, Internal team reviews + approves before send, negotiation handling</p>
+      <div class="phase-tags">
+        <span class="tag ai">Claude AI</span><span class="tag fe">Approval UI</span>
+      </div>
+    </div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="phase-row">
+    <div class="phase-num p6">6</div>
+    <div class="phase-body">
+      <h3>Meeting + Google Calendar</h3>
+      <p>Meeting scheduling flow, Google Calendar integration, confirmation from internal team, reminder setup</p>
+      <div class="phase-tags">
+        <span class="tag api">Google Calendar</span><span class="tag fe">Scheduling UI</span>
+      </div>
+    </div>
+  </div>
+  <div class="arrow">↓</div>
+  <div class="phase-row">
+    <div class="phase-num p7">7</div>
+    <div class="phase-body">
+      <h3>Deal Closure + Flow Visualization</h3>
+      <p>Mark deal won/lost with remarks, visual journey flowchart per lead, overall reporting dashboard</p>
+      <div class="phase-tags">
+        <span class="tag fe">Flow Chart UI</span><span class="tag be">Reporting API</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">Adhoc — after core is live</div>
+    <div class="divider-line"></div>
+  </div>
+
+  <div class="phase-row">
+    <div class="phase-num adhoc">+</div>
+    <div class="phase-body">
+      <h3>HubSpot + Real-time Sales AI Analyst</h3>
+      <p>HubSpot sync, Gong/Sybill integration, real-time call AI with product + market + technical knowledge</p>
+      <div class="phase-tags">
+        <span class="tag api">HubSpot</span><span class="tag ai">Real-time AI</span><span class="tag api">Gong/Sybill</span>
+      </div>
+    </div>
+  </div>
+</div>

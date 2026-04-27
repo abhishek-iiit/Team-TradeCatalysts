@@ -1,0 +1,191 @@
+<h2>Design Section 4 of 4 — API Design & Integration Contracts</h2>
+<p class="subtitle">DRF REST endpoints per app + external service contracts</p>
+
+<style>
+* { box-sizing: border-box; }
+.section { margin-bottom: 24px; }
+.section-title { font-size: 14px; font-weight: 800; color: #1e293b; margin: 0 0 10px; display: flex; align-items: center; gap: 10px; }
+.section-title .app-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+
+.endpoint-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0; font-size: 12px; }
+.endpoint-table th { background: #f8fafc; text-align: left; padding: 8px 12px; color: #374151; font-weight: 700; border-bottom: 1px solid #e2e8f0; }
+.endpoint-table td { padding: 7px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; color: #444; }
+.endpoint-table tr:last-child td { border-bottom: none; }
+.method { font-weight: 800; font-family: monospace; font-size: 11px; padding: 2px 7px; border-radius: 4px; }
+.GET { background: #dbeafe; color: #1d4ed8; }
+.POST { background: #d1fae5; color: #065f46; }
+.PATCH { background: #fef3c7; color: #92400e; }
+.DELETE { background: #fee2e2; color: #991b1b; }
+.route { font-family: monospace; color: #6d28d9; font-size: 11px; }
+.auth-badge { font-size: 10px; background: #f1f5f9; color: #64748b; padding: 1px 6px; border-radius: 10px; }
+
+.int-grid { display: flex; flex-direction: column; gap: 12px; }
+.int-card { border-radius: 10px; border: 1px solid #e2e8f0; overflow: hidden; }
+.int-header { padding: 10px 16px; font-weight: 700; font-size: 13px; display: flex; align-items: center; gap: 10px; }
+.int-body { padding: 12px 16px; background: #fff; display: flex; gap: 16px; }
+.int-col { flex: 1; }
+.int-col h4 { font-size: 11px; font-weight: 700; color: #374151; text-transform: uppercase; letter-spacing: 0.04em; margin: 0 0 6px; }
+.code-block { background: #1e293b; color: #a5f3fc; font-family: monospace; font-size: 11px; padding: 10px 12px; border-radius: 6px; line-height: 1.7; }
+.code-block .k { color: #fbbf24; }
+.code-block .s { color: #86efac; }
+.code-block .c { color: #6b7280; font-style: italic; }
+
+.task-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 10px; overflow: hidden; border: 1px solid #e2e8f0; font-size: 12px; }
+.task-table th { background: #f8fafc; text-align: left; padding: 8px 12px; color: #374151; font-weight: 700; border-bottom: 1px solid #e2e8f0; }
+.task-table td { padding: 7px 12px; border-bottom: 1px solid #f1f5f9; vertical-align: top; color: #444; }
+.task-table tr:last-child td { border-bottom: none; }
+</style>
+
+<!-- ── REST Endpoints ── -->
+<div class="section">
+  <div class="section-title">
+    <span class="app-badge" style="background:#dbeafe;color:#1e40af">accounts</span> Auth
+  </div>
+  <table class="endpoint-table">
+    <tr><th>Method</th><th>Route</th><th>Description</th><th>Auth</th></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/auth/login/</td><td>Email + password → access + refresh JWT</td><td>—</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/auth/refresh/</td><td>Rotate access token via refresh token</td><td>—</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/auth/logout/</td><td>Blacklist refresh token</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/auth/me/</td><td>Current user profile</td><td>JWT</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <span class="app-badge" style="background:#dbeafe;color:#1e40af">campaigns + leads</span> Core Pipeline
+  </div>
+  <table class="endpoint-table">
+    <tr><th>Method</th><th>Route</th><th>Description</th><th>Auth</th></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/campaigns/</td><td>List campaigns (with lead counts)</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/campaigns/</td><td>Create campaign + trigger Volza enrichment async</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/campaigns/:id/</td><td>Campaign detail with stats</td><td>JWT</td></tr>
+    <tr><td><span class="method PATCH">PATCH</span></td><td class="route">/api/campaigns/:id/</td><td>Update status / pause campaign</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/campaigns/:id/leads/</td><td>Lead list for campaign (filterable by stage)</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/campaigns/:id/export-missing/</td><td>Generate + return CSV of leads with no email/phone</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/leads/:id/</td><td>Lead detail (company, contacts, actions, threads)</td><td>JWT</td></tr>
+    <tr><td><span class="method PATCH">PATCH</span></td><td class="route">/api/leads/:id/</td><td>Update stage / toggle auto_flow_paused</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/:id/actions/</td><td>Log manual action (call note, manual takeover)</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/leads/:id/actions/</td><td>Full action history for timeline tab</td><td>JWT</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <span class="app-badge" style="background:#d1fae5;color:#065f46">communications</span> Email + Calls
+  </div>
+  <table class="endpoint-table">
+    <tr><th>Method</th><th>Route</th><th>Description</th><th>Auth</th></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/:id/send-intro/</td><td>Send intro email + brochure to selected contacts</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/:id/send-pricing/</td><td>Send pricing email (manual or scheduled trigger)</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/bulk-send-intro/</td><td>Bulk intro email to checkbox-selected leads</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/leads/:id/threads/</td><td>All email threads for a lead</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/threads/:id/messages/</td><td>All messages in a thread (in + out)</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/:id/log-call/</td><td>Log a call with notes + outcome</td><td>JWT</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <span class="app-badge" style="background:#ede9fe;color:#5b21b6">ai_assistant</span> Gemini Drafts
+  </div>
+  <table class="endpoint-table">
+    <tr><th>Method</th><th>Route</th><th>Description</th><th>Auth</th></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/:id/generate-draft/</td><td>Call Gemini with thread context → create AIDraft(pending)</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/ai-drafts/</td><td>List all pending drafts (approval queue)</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/ai-drafts/:id/</td><td>Single draft with original thread for context</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/ai-drafts/:id/approve/</td><td>Send draft via Gmail, mark sent, log LeadAction</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/ai-drafts/:id/reject/</td><td>Reject draft with optional note</td><td>JWT</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <div class="section-title">
+    <span class="app-badge" style="background:#fef3c7;color:#92400e">deals + meetings + products</span>
+  </div>
+  <table class="endpoint-table">
+    <tr><th>Method</th><th>Route</th><th>Description</th><th>Auth</th></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/:id/close/</td><td>Create Deal (won/lost + remarks), update stage</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/leads/:id/schedule-meeting/</td><td>Create Google Calendar event + Meeting record</td><td>JWT</td></tr>
+    <tr><td><span class="method GET">GET</span></td><td class="route">/api/products/</td><td>List all products</td><td>JWT</td></tr>
+    <tr><td><span class="method POST">POST</span></td><td class="route">/api/products/</td><td>Create product</td><td>JWT</td></tr>
+    <tr><td><span class="method PATCH">PATCH</span></td><td class="route">/api/products/:id/</td><td>Update product + upload brochure PDF</td><td>JWT</td></tr>
+    <tr><td><span class="method DELETE">DELETE</span></td><td class="route">/api/products/:id/</td><td>Delete product</td><td>JWT</td></tr>
+  </table>
+</div>
+
+<!-- ── Django-Q2 Background Tasks ── -->
+<div class="section">
+  <div class="section-title">⚙️ Django-Q2 Background Tasks</div>
+  <table class="task-table">
+    <tr><th>Task name</th><th>Trigger</th><th>What it does</th></tr>
+    <tr><td><code>enrich_leads_from_volza</code></td><td>Campaign created</td><td>Call Volza API → create Lead + Contact records</td></tr>
+    <tr><td><code>enrich_contacts_from_lusha</code></td><td>Lead has no email/phone after Volza</td><td>Call LUSHA → fill Contact.email / phone</td></tr>
+    <tr><td><code>schedule_pricing_email</code></td><td>Intro email sent</td><td>Schedule <code>send_pricing_email</code> task for T+4 days if no reply</td></tr>
+    <tr><td><code>send_pricing_email</code></td><td>T+4 days, no reply detected</td><td>Send pricing email via Gmail SMTP, log LeadAction</td></tr>
+    <tr><td><code>schedule_pricing_followup</code></td><td>Pricing email sent</td><td>Schedule follow-up if no reply in T+4 days</td></tr>
+  </table>
+</div>
+
+<!-- ── External API Contracts ── -->
+<div class="section">
+  <div class="section-title">🔌 External API Integration Contracts</div>
+  <div class="int-grid">
+
+    <div class="int-card">
+      <div class="int-header" style="background:#dbeafe;color:#1e40af">Volza API — Lead Discovery</div>
+      <div class="int-body">
+        <div class="int-col">
+          <h4>We Send</h4>
+          <div class="code-block"><span class="c"># Query params</span><br>product_name: <span class="s">"Acetone"</span><br>hsn_code: <span class="s">"29141100"</span><br>country: <span class="s">"IN,US"</span><br>min_transactions: <span class="k">10</span></div>
+        </div>
+        <div class="int-col">
+          <h4>We Store</h4>
+          <div class="code-block">Lead.company_name<br>Lead.company_country<br>Lead.volza_data <span class="c">(raw JSON)</span><br>Lead.purchase_history<br>Contact.first_name<br>Contact.designation<br>Contact.email <span class="c">(if present)</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="int-card">
+      <div class="int-header" style="background:#d1fae5;color:#065f46">LUSHA API — Contact Enrichment</div>
+      <div class="int-body">
+        <div class="int-col">
+          <h4>We Send</h4>
+          <div class="code-block"><span class="c"># Person lookup</span><br>first_name: <span class="s">"John"</span><br>last_name: <span class="s">"Smith"</span><br>company_name: <span class="s">"Acme Corp"</span></div>
+        </div>
+        <div class="int-col">
+          <h4>We Store</h4>
+          <div class="code-block">Contact.email<br>Contact.phone<br>Contact.linkedin_url<br>Contact.lusha_raw <span class="c">(raw JSON)</span><br>Contact.source = <span class="s">"lusha"</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="int-card">
+      <div class="int-header" style="background:#fef3c7;color:#92400e">Gmail SMTP — Email Sending</div>
+      <div class="int-body">
+        <div class="int-col">
+          <h4>Django Settings</h4>
+          <div class="code-block">EMAIL_BACKEND = <span class="s">"smtp"</span><br>EMAIL_HOST = <span class="s">"smtp.gmail.com"</span><br>EMAIL_PORT = <span class="k">587</span><br>EMAIL_USE_TLS = <span class="k">True</span><br>EMAIL_HOST_USER = <span class="s">env var</span><br>EMAIL_HOST_PASSWORD = <span class="s">app password</span></div>
+        </div>
+        <div class="int-col">
+          <h4>On Every Send</h4>
+          <div class="code-block"><span class="c"># Attach brochure if intro</span><br>attach product.brochure_pdf<br><span class="c"># Store for threading</span><br>save gmail_message_id<br>save gmail_thread_id<br><span class="c"># Log to DB</span><br>create EmailMessage(outbound)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="int-card">
+      <div class="int-header" style="background:#f0fdf4;color:#14532d">Gemini API — AI Email Drafts</div>
+      <div class="int-body">
+        <div class="int-col">
+          <h4>Prompt Structure</h4>
+          <div class="code-block"><span class="s">"""You are a B2B sales assistant.</span><br><span class="s">Product: {product.name}</span><br><span class="s">Company: {lead.company_name}</span><br><span class="s">Pricing trend: {lead.pricing_trend}</span><br><span class="s">Email thread so far:</span><br><span class="s">{thread_messages}</span><br><span class="s">Draft a professional reply.</span><br><span class="s">Do not send until approved."""</span></div>
+        </div>
+        <div class="int-col">
+          <h4>We Store</h4>
+          <div class="code-block">AIDraft.draft_content<br>AIDraft.context_summary<br>AIDraft.status = <span class="s">"pending"</span><br><span class="c"># Human reviews before</span><br><span class="c"># any email is sent</span></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
