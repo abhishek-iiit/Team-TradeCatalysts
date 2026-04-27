@@ -4,6 +4,7 @@ from . import views
 
 router = DefaultRouter()
 router.register('meetings', views.MeetingViewSet, basename='meeting')
+router.register('deals', views.DealViewSet, basename='deal')
 
 urlpatterns = [
     path('', include(router.urls)),

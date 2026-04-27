@@ -11,6 +11,8 @@ import EmailThreadsTab from '../components/leads/EmailThreadsTab'
 import SendEmailPanel from '../components/leads/SendEmailPanel'
 import GenerateDraftButton from '../components/leads/GenerateDraftButton'
 import MeetingsTab from '../components/leads/MeetingsTab'
+import CloseDealModal from '../components/leads/CloseDealModal'
+import FlowVisualization from '../components/leads/FlowVisualization'
 
 const STAGES = [
   { value: 'discovered',       label: 'Discovered' },
@@ -22,13 +24,16 @@ const STAGES = [
   { value: 'closed_lost',      label: 'Closed Lost' },
 ]
 
-const TABS = ['Timeline', 'Call Log', 'Emails', 'Meetings']
+const TABS = ['Timeline', 'Call Log', 'Emails', 'Meetings', 'Flow']
+
+const CLOSED_STAGES = ['closed_won', 'closed_lost']
 
 export default function LeadDetailPage() {
   const { id } = useParams()
   const navigate = useNavigate()
   const qc = useQueryClient()
   const [activeTab, setActiveTab] = useState('Timeline')
+  const [showCloseDeal, setShowCloseDeal] = useState(false)
 
   const { data: lead, isLoading, isError } = useQuery({
     queryKey: ['lead', id],
@@ -85,6 +90,25 @@ export default function LeadDetailPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
+          {!CLOSED_STAGES.includes(lead.stage) && (
+            <button
+              onClick={() => setShowCloseDeal(true)}
+              className="text-sm font-semibold px-3 py-1.5 rounded-lg border border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors"
+            >
+              Close Deal
+            </button>
+          )}
+          {CLOSED_STAGES.includes(lead.stage) && (
+            <span
+              className={`text-xs font-semibold px-3 py-1.5 rounded-lg border ${
+                lead.stage === 'closed_won'
+                  ? 'bg-green-50 border-green-200 text-green-700'
+                  : 'bg-red-50 border-red-200 text-red-600'
+              }`}
+            >
+              {lead.stage === 'closed_won' ? 'Won' : 'Lost'}
+            </span>
+          )}
           <GenerateDraftButton lead={lead} />
           <SendEmailPanel lead={lead} />
           <select
@@ -149,6 +173,9 @@ export default function LeadDetailPage() {
           {activeTab === 'Meetings' && (
             <MeetingsTab lead={lead} />
           )}
+          {activeTab === 'Flow' && (
+            <FlowVisualization leadId={id} />
+          )}
         </div>
 
         {/* Right: contacts sidebar */}
@@ -161,6 +188,10 @@ export default function LeadDetailPage() {
           )}
         </div>
       </div>
+
+      {showCloseDeal && (
+        <CloseDealModal lead={lead} onClose={() => setShowCloseDeal(false)} />
+      )}
     </div>
   )
 }

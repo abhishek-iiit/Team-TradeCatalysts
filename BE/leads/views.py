@@ -242,6 +242,107 @@ class LeadViewSet(viewsets.ModelViewSet):
         qs = lead.meetings.select_related('contact', 'scheduled_by').order_by('scheduled_at')
         return Response(MeetingSerializer(qs, many=True).data)
 
+    @action(detail=True, methods=['post'], url_path='close')
+    def close(self, request, pk=None):
+        from deals.models import Deal, DealOutcome
+        from deals.serializers import CloseDealSerializer, DealSerializer
+        from django.utils import timezone
+
+        lead = self.get_object()
+
+        if lead.stage in (LeadStage.CLOSED_WON, LeadStage.CLOSED_LOST):
+            return Response(
+                {'error': 'Lead is already closed.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        if Deal.objects.filter(lead=lead).exists():
+            return Response(
+                {'error': 'A deal record already exists for this lead.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        serializer = CloseDealSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+
+        outcome = data['outcome']
+        deal = Deal.objects.create(
+            lead=lead,
+            outcome=outcome,
+            closed_by=request.user,
+            closed_at=timezone.now(),
+            remarks=data.get('remarks', ''),
+            deal_value=data.get('deal_value'),
+        )
+
+        new_stage = LeadStage.CLOSED_WON if outcome == DealOutcome.WON else LeadStage.CLOSED_LOST
+        lead.stage = new_stage
+        lead.save(update_fields=['stage', 'updated_at'])
+
+        LeadAction.objects.create(
+            lead=lead,
+            performed_by=request.user,
+            action_type=ActionType.DEAL_CLOSED,
+            notes=f'Deal marked as {outcome}. {data.get("remarks", "")}'.strip(),
+            metadata={'deal_id': str(deal.id), 'outcome': outcome},
+        )
+
+        return Response(DealSerializer(deal).data, status=status.HTTP_201_CREATED)
+
+    @action(detail=True, methods=['get'], url_path='flow')
+    def flow(self, request, pk=None):
+        lead = self.get_object()
+        actions = lead.actions.select_related('performed_by').order_by('created_at')
+
+        STAGE_ORDER = [
+            'discovered', 'intro_sent', 'pricing_sent',
+            'pricing_followup', 'meeting_set', 'closed_won', 'closed_lost',
+        ]
+        STAGE_LABELS = {
+            'discovered': 'Discovered',
+            'intro_sent': 'Intro Sent',
+            'pricing_sent': 'Pricing Sent',
+            'pricing_followup': 'Pricing Follow-Up',
+            'meeting_set': 'Meeting Set',
+            'closed_won': 'Closed Won',
+            'closed_lost': 'Closed Lost',
+        }
+
+        current_idx = STAGE_ORDER.index(lead.stage) if lead.stage in STAGE_ORDER else 0
+
+        stages = [
+            {
+                'key': s,
+                'label': STAGE_LABELS[s],
+                'completed': i <= current_idx,
+                'current': s == lead.stage,
+            }
+            for i, s in enumerate(STAGE_ORDER)
+        ]
+
+        timeline = [
+            {
+                'id': str(a.id),
+                'action_type': a.action_type,
+                'notes': a.notes,
+                'performed_by': a.performed_by.email if a.performed_by else None,
+                'is_automated': a.performed_by is None,
+                'created_at': a.created_at.isoformat(),
+                'metadata': a.metadata,
+            }
+            for a in actions
+        ]
+
+        return Response({
+            'lead_id': str(lead.id),
+            'company_name': lead.company_name,
+            'current_stage': lead.stage,
+            'auto_flow_paused': lead.auto_flow_paused,
+            'stages': stages,
+            'timeline': timeline,
+        })
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])

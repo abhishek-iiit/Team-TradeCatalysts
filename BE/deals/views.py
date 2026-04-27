@@ -2,8 +2,16 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .models import Meeting
-from .serializers import MeetingSerializer, MeetingUpdateSerializer
+from .models import Meeting, Deal
+from .serializers import MeetingSerializer, MeetingUpdateSerializer, DealSerializer
+
+
+class DealViewSet(viewsets.ReadOnlyModelViewSet):
+    permission_classes = [IsAuthenticated]
+    serializer_class = DealSerializer
+
+    def get_queryset(self):
+        return Deal.objects.select_related('lead', 'closed_by').order_by('-closed_at')
 
 
 class MeetingViewSet(viewsets.ModelViewSet):

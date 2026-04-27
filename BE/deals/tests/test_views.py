@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from rest_framework.test import APIClient
 from campaigns.models import Campaign, Product
 from leads.models import Lead, Contact, LeadStage, ContactSource, LeadAction, ActionType
-from deals.models import Meeting, MeetingStatus
+from deals.models import Meeting, MeetingStatus, Deal, DealOutcome
 
 User = get_user_model()
 
@@ -122,3 +122,89 @@ def test_update_meeting_status_to_confirmed(auth_client, user, lead, contact):
     assert resp.status_code == 200
     meeting.refresh_from_db()
     assert meeting.status == MeetingStatus.CONFIRMED
+
+
+# ── Deal Closure Tests ─────────────────────────────────────────────────────────
+
+@pytest.mark.django_db
+def test_close_deal_won(auth_client, lead):
+    lead.stage = LeadStage.MEETING_SET
+    lead.save(update_fields=['stage'])
+
+    resp = auth_client.post(f'/api/leads/{lead.id}/close/', {
+        'outcome': 'won',
+        'remarks': 'Great deal!',
+        'deal_value': '150000.00',
+    }, format='json')
+
+    assert resp.status_code == 201
+    assert resp.data['outcome'] == 'won'
+    assert resp.data['lead_company_name'] == 'JP Corp'
+    lead.refresh_from_db()
+    assert lead.stage == LeadStage.CLOSED_WON
+    assert lead.actions.filter(action_type=ActionType.DEAL_CLOSED).exists()
+    assert Deal.objects.filter(lead=lead, outcome=DealOutcome.WON).count() == 1
+
+
+@pytest.mark.django_db
+def test_close_deal_lost(auth_client, lead):
+    lead.stage = LeadStage.PRICING_SENT
+    lead.save(update_fields=['stage'])
+
+    resp = auth_client.post(f'/api/leads/{lead.id}/close/', {
+        'outcome': 'lost',
+        'remarks': 'Price too high',
+    }, format='json')
+
+    assert resp.status_code == 201
+    assert resp.data['outcome'] == 'lost'
+    lead.refresh_from_db()
+    assert lead.stage == LeadStage.CLOSED_LOST
+
+
+@pytest.mark.django_db
+def test_close_deal_invalid_outcome_returns_400(auth_client, lead):
+    resp = auth_client.post(f'/api/leads/{lead.id}/close/', {
+        'outcome': 'maybe',
+    }, format='json')
+    assert resp.status_code == 400
+
+
+@pytest.mark.django_db
+def test_close_deal_already_closed_returns_400(auth_client, user, lead):
+    lead.stage = LeadStage.CLOSED_WON
+    lead.save(update_fields=['stage'])
+    Deal.objects.create(
+        lead=lead, outcome=DealOutcome.WON, closed_by=user,
+        closed_at='2026-04-01T00:00:00Z',
+    )
+
+    resp = auth_client.post(f'/api/leads/{lead.id}/close/', {
+        'outcome': 'won',
+    }, format='json')
+    assert resp.status_code == 400
+
+
+@pytest.mark.django_db
+def test_flow_endpoint_returns_stages_and_timeline(auth_client, lead):
+    resp = auth_client.get(f'/api/leads/{lead.id}/flow/')
+    assert resp.status_code == 200
+    data = resp.data
+    assert data['current_stage'] == lead.stage
+    assert data['company_name'] == 'JP Corp'
+    assert len(data['stages']) == 7
+    assert 'timeline' in data
+
+
+@pytest.mark.django_db
+def test_list_deals_endpoint(auth_client, user, lead):
+    lead.stage = LeadStage.CLOSED_WON
+    lead.save(update_fields=['stage'])
+    Deal.objects.create(
+        lead=lead, outcome=DealOutcome.WON, closed_by=user,
+        closed_at='2026-04-01T00:00:00Z',
+    )
+    resp = auth_client.get('/api/deals/')
+    assert resp.status_code == 200
+    assert len(resp.data) == 1
+    assert resp.data[0]['outcome'] == 'won'

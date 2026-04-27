@@ -1,5 +1,28 @@
 from rest_framework import serializers
-from .models import Meeting
+from .models import Meeting, Deal
+
+
+class DealSerializer(serializers.ModelSerializer):
+    closed_by_email = serializers.SerializerMethodField()
+    lead_company_name = serializers.CharField(source='lead.company_name', read_only=True)
+
+    class Meta:
+        model = Deal
+        fields = [
+            'id', 'outcome', 'closed_at', 'remarks', 'deal_value',
+            'closed_by_email', 'lead_company_name', 'created_at',
+        ]
+
+    def get_closed_by_email(self, obj):
+        return obj.closed_by.email if obj.closed_by else None
+
+
+class CloseDealSerializer(serializers.Serializer):
+    outcome = serializers.ChoiceField(choices=['won', 'lost'])
+    remarks = serializers.CharField(required=False, default='', allow_blank=True)
+    deal_value = serializers.DecimalField(
+        max_digits=10, decimal_places=2, required=False, allow_null=True
+    )
 
 
 class MeetingSerializer(serializers.ModelSerializer):
