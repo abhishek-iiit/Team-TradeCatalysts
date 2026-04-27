@@ -11,4 +11,5 @@ urlpatterns = [
     path('api/', include('ai_assistant.urls')),
     path('api/', include('deals.urls')),
     path('api/', include('communications.urls')),
+    path('api/', include('trade_data.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -6,7 +6,7 @@ export const approveDraft = (id, { content, file } = {}) => {
   const form = new FormData()
   if (content !== undefined) form.append('reply_content', content)
   if (file) form.append('attachment', file)
-  return api.post(`/ai-drafts/${id}/approve/`, form).then((r) => r.data)
+  return api.post(`/ai-drafts/${id}/approve/`, form, { headers: { 'Content-Type': undefined } }).then((r) => r.data)
 }
 
 export const rejectDraft = (id) => api.post(`/ai-drafts/${id}/reject/`).then((r) => r.data)

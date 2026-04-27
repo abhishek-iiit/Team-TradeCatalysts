@@ -51,11 +51,24 @@ def enrich_leads_from_volza(campaign_id: str) -> None:
             data_year=campaign.data_year,
         )
 
+        # Build set of emails already associated with any lead for this product
+        existing_emails_for_product = set(
+            Contact.objects.filter(
+                email__isnull=False,
+                lead__campaign__products=product,
+            ).values_list('email', flat=True)
+        )
+
         for item in results:
             company_name = item.get("company_name", "")
 
-            # Skip duplicates within this campaign
+            # Skip duplicates within this campaign by company name
             if Lead.objects.filter(campaign=campaign, company_name=company_name).exists():
+                continue
+
+            # Skip if this contact's email already exists for this product in any campaign
+            contact_email = (item.get("contact_email") or "").strip().lower()
+            if contact_email and contact_email in existing_emails_for_product:
                 continue
 
             # purchase_history from Volza can be a list; Lead.purchase_history is
@@ -90,6 +103,10 @@ def enrich_leads_from_volza(campaign_id: str) -> None:
                 source=ContactSource.VOLZA,
                 is_primary=True,
             )
+
+            # Track new email so later results in the same batch are also deduped
+            if contact.email:
+                existing_emails_for_product.add(contact.email.strip().lower())
 
             # Queue Lusha enrichment when no contact info is available
             if not contact.email and not contact.phone:

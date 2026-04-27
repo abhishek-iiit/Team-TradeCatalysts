@@ -10,6 +10,7 @@ import LeadDetailPage from './pages/LeadDetailPage'
 import ProductsPage from './pages/ProductsPage'
 import AIDraftsPage from './pages/AIDraftsPage'
 import InboxPage from './pages/InboxPage'
+import TradeDataPage from './pages/TradeDataPage'
 import SettingsPage from './pages/SettingsPage'
 
 function AppLayout() {
@@ -27,6 +28,7 @@ function AppLayout() {
           <Route path="products" element={<ProductsPage />} />
           <Route path="ai-drafts" element={<AIDraftsPage />} />
           <Route path="inbox" element={<InboxPage />} />
+          <Route path="trade-data" element={<TradeDataPage />} />
           <Route path="settings" element={<SettingsPage />} />
         </Routes>
       </main>
