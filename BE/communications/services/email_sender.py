@@ -126,3 +126,24 @@ class GmailSMTPSender:
         )
 
         return thread
+
+    def send_draft_reply(self, thread, contact, draft_content: str) -> None:
+        """Send an approved AI draft as a reply in an existing thread."""
+        message_id = f'<{uuid.uuid4()}@salescatalyst>'
+
+        django_email = DjangoEmailMessage(
+            subject=f'Re: {thread.subject}',
+            body=draft_content,
+            from_email=settings.EMAIL_HOST_USER,
+            to=[contact.email],
+            headers={'Message-ID': message_id},
+        )
+        django_email.send(fail_silently=False)
+
+        EmailMessage.objects.create(
+            thread=thread,
+            direction=MessageDirection.OUTBOUND,
+            body_text=draft_content,
+            sent_at=timezone.now(),
+            gmail_message_id=message_id,
+        )

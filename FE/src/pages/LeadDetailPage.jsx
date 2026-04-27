@@ -9,6 +9,7 @@ import TimelineTab from '../components/leads/TimelineTab'
 import CallLogTab from '../components/leads/CallLogTab'
 import EmailThreadsTab from '../components/leads/EmailThreadsTab'
 import SendEmailPanel from '../components/leads/SendEmailPanel'
+import GenerateDraftButton from '../components/leads/GenerateDraftButton'
 
 const STAGES = [
   { value: 'discovered',       label: 'Discovered' },
@@ -83,6 +84,7 @@ export default function LeadDetailPage() {
           </p>
         </div>
         <div className="flex items-center gap-3">
+          <GenerateDraftButton lead={lead} />
           <SendEmailPanel lead={lead} />
           <select
             value={lead.stage}

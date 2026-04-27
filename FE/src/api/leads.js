@@ -26,3 +26,6 @@ export const sendPricingEmail = (id) =>
 
 export const bulkSendIntroEmail = (leadIds) =>
   api.post('/leads/bulk-send-intro/', { lead_ids: leadIds }).then((r) => r.data)
+
+export const generateDraft = (id) =>
+  api.post(`/leads/${id}/generate-draft/`).then((r) => r.data)

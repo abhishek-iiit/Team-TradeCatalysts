@@ -157,6 +157,32 @@ class LeadViewSet(viewsets.ModelViewSet):
 
         return Response({'queued': queued}, status=status.HTTP_202_ACCEPTED)
 
+    @action(detail=True, methods=['post'], url_path='generate-draft')
+    def generate_draft(self, request, pk=None):
+        from ai_assistant.tasks import async_task
+        lead = self.get_object()
+
+        thread = lead.threads.order_by('-created_at').first()
+        if not thread:
+            return Response(
+                {'error': 'No email thread found for this lead. Send an intro email first.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        pending_draft = lead.ai_drafts.filter(status='pending_review').exists()
+        if pending_draft:
+            return Response(
+                {'error': 'A pending draft already exists for this lead.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        async_task(
+            'ai_assistant.tasks.generate_ai_draft_task',
+            str(lead.id),
+            str(thread.id),
+        )
+        return Response({'status': 'generating'}, status=status.HTTP_202_ACCEPTED)
+
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
