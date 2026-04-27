@@ -3,6 +3,7 @@ import PrivateRoute from './components/layout/PrivateRoute'
 import Navbar from './components/layout/Navbar'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
+import CampaignsListPage from './pages/CampaignsListPage'
 import NewCampaignPage from './pages/NewCampaignPage'
 import CampaignLeadsPage from './pages/CampaignLeadsPage'
 import LeadDetailPage from './pages/LeadDetailPage'
@@ -17,6 +18,7 @@ function AppLayout() {
         <Routes>
           <Route index element={<Navigate to="/dashboard" replace />} />
           <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="campaigns" element={<CampaignsListPage />} />
           <Route path="campaigns/new" element={<NewCampaignPage />} />
           <Route path="campaigns/:id/leads" element={<CampaignLeadsPage />} />
           <Route path="leads/:id" element={<LeadDetailPage />} />

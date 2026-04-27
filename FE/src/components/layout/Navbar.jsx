@@ -16,7 +16,7 @@ export default function Navbar() {
         Sales<span className="text-indigo-400">Catalyst</span>
       </Link>
       <Link to="/dashboard" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Dashboard</Link>
-      <Link to="/campaigns/new" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Campaigns</Link>
+      <Link to="/campaigns" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Campaigns</Link>
       <Link to="/products" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">Products</Link>
       <Link to="/ai-drafts" className="text-slate-400 hover:text-white text-sm font-medium transition-colors">AI Drafts</Link>
       <div className="ml-auto flex items-center gap-3">
