@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import PrivateRoute from './components/layout/PrivateRoute'
 import Navbar from './components/layout/Navbar'
 import LoginPage from './pages/LoginPage'
+import SignupPage from './pages/SignupPage'
 import DashboardPage from './pages/DashboardPage'
 import CampaignsListPage from './pages/CampaignsListPage'
 import NewCampaignPage from './pages/NewCampaignPage'
@@ -41,6 +42,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage />} />
         <Route element={<PrivateRoute />}>
           <Route path="/*" element={<AppLayout />} />
         </Route>

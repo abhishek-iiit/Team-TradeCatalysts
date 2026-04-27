@@ -1,5 +1,17 @@
 import api from './axios'
 
+export async function signup(email, password, firstName, lastName) {
+  const { data } = await api.post('/auth/signup/', {
+    email,
+    password,
+    first_name: firstName,
+    last_name: lastName,
+  })
+  localStorage.setItem('access_token', data.access)
+  localStorage.setItem('refresh_token', data.refresh)
+  return data.user
+}
+
 export async function login(email, password) {
   const { data } = await api.post('/auth/login/', { email, password })
   localStorage.setItem('access_token', data.access)
