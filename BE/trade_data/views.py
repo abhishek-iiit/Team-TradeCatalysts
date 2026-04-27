@@ -15,13 +15,20 @@ def preview(request):
         return Response({'error': 'No file provided'}, status=status.HTTP_400_BAD_REQUEST)
 
     try:
-        leads = parse_panjiva(file)
+        leads, detected_headers = parse_panjiva(file)
     except Exception as exc:
         return Response({'error': f'Parse error: {exc}'}, status=status.HTTP_400_BAD_REQUEST)
 
     if not leads:
+        norm_found = [h for h in detected_headers if h.strip()][:20]
         return Response(
-            {'error': 'No leads could be extracted. Check that the file has a BUYER or Consignee column.'},
+            {
+                'error': (
+                    'No leads could be extracted. '
+                    'Expected a BUYER column (Exim) or Consignee column (Panjiva). '
+                    f'Columns detected: {norm_found}'
+                )
+            },
             status=status.HTTP_400_BAD_REQUEST,
         )
 
