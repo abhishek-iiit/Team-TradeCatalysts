@@ -10,6 +10,7 @@ import CallLogTab from '../components/leads/CallLogTab'
 import EmailThreadsTab from '../components/leads/EmailThreadsTab'
 import SendEmailPanel from '../components/leads/SendEmailPanel'
 import GenerateDraftButton from '../components/leads/GenerateDraftButton'
+import MeetingsTab from '../components/leads/MeetingsTab'
 
 const STAGES = [
   { value: 'discovered',       label: 'Discovered' },
@@ -21,7 +22,7 @@ const STAGES = [
   { value: 'closed_lost',      label: 'Closed Lost' },
 ]
 
-const TABS = ['Timeline', 'Call Log', 'Emails']
+const TABS = ['Timeline', 'Call Log', 'Emails', 'Meetings']
 
 export default function LeadDetailPage() {
   const { id } = useParams()
@@ -144,6 +145,9 @@ export default function LeadDetailPage() {
           )}
           {activeTab === 'Emails' && (
             <EmailThreadsTab leadId={id} />
+          )}
+          {activeTab === 'Meetings' && (
+            <MeetingsTab lead={lead} />
           )}
         </div>
 

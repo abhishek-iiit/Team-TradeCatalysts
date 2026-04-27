@@ -4,7 +4,7 @@ from rest_framework.decorators import api_view, permission_classes, action
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from .models import Lead, LeadAction, LeadStage, Contact
+from .models import Lead, LeadAction, LeadStage, Contact, ActionType
 from .serializers import (
     LeadListSerializer,
     LeadDetailSerializer,
@@ -182,6 +182,65 @@ class LeadViewSet(viewsets.ModelViewSet):
             str(thread.id),
         )
         return Response({'status': 'generating'}, status=status.HTTP_202_ACCEPTED)
+
+    @action(detail=True, methods=['post'], url_path='schedule-meeting')
+    def schedule_meeting(self, request, pk=None):
+        from deals.services.calendar_invite import CalendarInviteService
+        from deals.models import Meeting
+        from deals.serializers import ScheduleMeetingSerializer, MeetingSerializer
+
+        lead = self.get_object()
+        serializer = ScheduleMeetingSerializer(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        data = serializer.validated_data
+
+        try:
+            contact = lead.contacts.get(id=data['contact_id'])
+        except Contact.DoesNotExist:
+            return Response(
+                {'error': 'Contact not found for this lead.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        calendar_service = CalendarInviteService()
+        event_id = calendar_service.create_event(
+            lead=lead,
+            contact=contact,
+            scheduled_at=data['scheduled_at'],
+            meeting_link=data.get('meeting_link', ''),
+        )
+
+        meeting = Meeting.objects.create(
+            lead=lead,
+            contact=contact,
+            scheduled_by=request.user,
+            calendar_event_id=event_id,
+            scheduled_at=data['scheduled_at'],
+            meeting_link=data.get('meeting_link', ''),
+            notes=data.get('notes', ''),
+        )
+
+        LeadAction.objects.create(
+            lead=lead,
+            performed_by=request.user,
+            action_type=ActionType.MEETING_SCHEDULED,
+            notes=f'Meeting scheduled for {data["scheduled_at"].strftime("%Y-%m-%d %H:%M UTC")}',
+            metadata={'meeting_id': str(meeting.id)},
+        )
+
+        lead.stage = LeadStage.MEETING_SET
+        lead.save(update_fields=['stage', 'updated_at'])
+
+        return Response(MeetingSerializer(meeting).data, status=status.HTTP_201_CREATED)
+
+    @action(detail=True, methods=['get'], url_path='meetings')
+    def meetings(self, request, pk=None):
+        from deals.models import Meeting
+        from deals.serializers import MeetingSerializer
+
+        lead = self.get_object()
+        qs = lead.meetings.select_related('contact', 'scheduled_by').order_by('scheduled_at')
+        return Response(MeetingSerializer(qs, many=True).data)
 
 
 @api_view(['GET'])

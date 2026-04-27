@@ -9,4 +9,5 @@ urlpatterns = [
     path('api/', include('campaigns.urls')),
     path('api/', include('leads.urls')),
     path('api/', include('ai_assistant.urls')),
+    path('api/', include('deals.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
