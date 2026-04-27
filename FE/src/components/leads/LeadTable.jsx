@@ -42,7 +42,12 @@ export default function LeadTable({ leads, selected, onToggle, onToggleAll }) {
                     className="rounded border-gray-300"
                   />
                 </td>
-                <td className="px-4 py-3 font-medium text-gray-900">{lead.company_name}</td>
+                <td className="px-4 py-3">
+                  <span className="font-medium text-gray-900">{lead.company_name}</span>
+                  {lead.created_by_email && (
+                    <span className="block text-xs text-gray-400 mt-0.5">{lead.created_by_email}</span>
+                  )}
+                </td>
                 <td className="px-4 py-3 text-gray-500">{lead.company_country}</td>
                 <td className="px-4 py-3"><StageBadge stage={lead.stage} /></td>
                 <td className="px-4 py-3 text-gray-700">

@@ -99,7 +99,7 @@ class CampaignViewSet(viewsets.ModelViewSet):
         campaign = self.get_object()
         stage = request.query_params.get('stage')
         qs = Lead.objects.filter(campaign=campaign).select_related(
-            'campaign', 'assigned_to'
+            'campaign', 'campaign__created_by', 'assigned_to'
         ).prefetch_related('contacts')
         if stage:
             qs = qs.filter(stage=stage)

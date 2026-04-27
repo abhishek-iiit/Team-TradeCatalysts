@@ -34,13 +34,14 @@ class LeadActionSerializer(serializers.ModelSerializer):
 class LeadListSerializer(serializers.ModelSerializer):
     contacts = ContactSerializer(many=True, read_only=True)
     has_missing_contact = serializers.SerializerMethodField()
+    created_by_email = serializers.CharField(source='campaign.created_by.email', read_only=True, default=None)
 
     class Meta:
         model = Lead
         fields = [
             'id', 'company_name', 'company_country', 'company_website',
             'stage', 'auto_flow_paused', 'has_missing_contact',
-            'contacts', 'created_at', 'updated_at',
+            'contacts', 'created_by_email', 'created_at', 'updated_at',
         ]
 
     def get_has_missing_contact(self, obj):

@@ -30,7 +30,7 @@ class LeadViewSet(viewsets.ModelViewSet):
         return LeadListSerializer
 
     def get_queryset(self):
-        qs = Lead.objects.select_related('campaign', 'assigned_to').order_by('-created_at')
+        qs = Lead.objects.select_related('campaign', 'campaign__created_by', 'assigned_to').order_by('-created_at')
         if self.action == 'retrieve':
             return qs.prefetch_related(
                 'contacts',
