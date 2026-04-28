@@ -21,7 +21,7 @@ class Lead(TimestampedModel):
         'campaigns.Campaign', on_delete=models.CASCADE, related_name='leads'
     )
     company_name = models.CharField(max_length=255)
-    company_country = models.CharField(max_length=10)
+    company_country = models.CharField(max_length=100)
     company_website = models.CharField(max_length=255, blank=True)
     stage = models.CharField(
         max_length=30, choices=LeadStage.choices, default=LeadStage.DISCOVERED
