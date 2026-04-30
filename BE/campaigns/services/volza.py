@@ -5,15 +5,11 @@ import requests
 from typing import Optional
 
 _DEMO_FILE = Path(__file__).resolve().parent.parent.parent / 'demo' / 'volza_responses.json'
-_DEMO_DATA: dict | None = None
 
 
 def _load_demo_data() -> dict:
-    global _DEMO_DATA
-    if _DEMO_DATA is None:
-        with open(_DEMO_FILE) as f:
-            _DEMO_DATA = json.load(f)
-    return _DEMO_DATA
+    with open(_DEMO_FILE) as f:
+        return json.load(f)
 
 
 class VölzaClient:

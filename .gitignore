@@ -90,3 +90,10 @@ dump.rdb
 
 # graphify output
 graphify-out/
+
+# superpowers workspace
+.superpowers/
+
+# local oauth tokens / secrets
+BE/gmail_token.json
+BE/gmail_token*.json

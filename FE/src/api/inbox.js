@@ -8,3 +8,6 @@ export const replyToMessage = (messageId, data) =>
 
 export const togglePause = (messageId) =>
   api.post(`/inbox/${messageId}/pause/`).then((r) => r.data)
+
+export const generateReply = (messageId) =>
+  api.post(`/inbox/${messageId}/generate-reply/`).then((r) => r.data)

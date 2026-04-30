@@ -70,3 +70,16 @@ class InboxViewSet(viewsets.ReadOnlyModelViewSet):
         lead.auto_flow_paused = not lead.auto_flow_paused
         lead.save(update_fields=['auto_flow_paused', 'updated_at'])
         return Response({'auto_flow_paused': lead.auto_flow_paused})
+
+    @action(detail=True, methods=['post'], url_path='generate-reply')
+    def generate_reply(self, request, pk=None):
+        """Use Gemini to draft a reply for this inbound message thread."""
+        from ai_assistant.services.gemini_client import GeminiClient
+        message = self.get_object()
+        thread = message.thread
+        lead = thread.lead
+        try:
+            draft_content, _ = GeminiClient().generate_draft(lead, thread)
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        return Response({'draft': draft_content})

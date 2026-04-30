@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
-import { listInbox, replyToMessage, togglePause } from '../api/inbox'
+import { listInbox, replyToMessage, togglePause, generateReply } from '../api/inbox'
 
 const STAGE_OPTIONS = [
   { value: '', label: '— Keep current stage —' },
@@ -53,6 +53,11 @@ function InboxCard({ message }) {
   const pauseMutation = useMutation({
     mutationFn: () => togglePause(message.id),
     onSuccess: () => qc.invalidateQueries({ queryKey: ['inbox'] }),
+  })
+
+  const generateMutation = useMutation({
+    mutationFn: () => generateReply(message.id),
+    onSuccess: (data) => setReplyText(data.draft),
   })
 
   const threadLabel = THREAD_LABELS[message.thread_type] || message.thread_type
@@ -151,7 +156,15 @@ function InboxCard({ message }) {
               </div>
 
               {/* Actions */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 flex-wrap">
+                <button
+                  onClick={() => generateMutation.mutate()}
+                  disabled={generateMutation.isPending}
+                  className="bg-violet-600 hover:bg-violet-700 disabled:opacity-50 text-white text-sm font-semibold px-4 py-2 rounded-lg transition-colors"
+                >
+                  {generateMutation.isPending ? 'Generating…' : '✨ Generate AI Response'}
+                </button>
+
                 <button
                   onClick={() => replyMutation.mutate()}
                   disabled={!replyText.trim() || replyMutation.isPending}
@@ -185,6 +198,9 @@ function InboxCard({ message }) {
 
                 {replyMutation.isError && (
                   <span className="text-xs text-red-600">Send failed. Try again.</span>
+                )}
+                {generateMutation.isError && (
+                  <span className="text-xs text-red-600">AI generation failed. Try again.</span>
                 )}
               </div>
             </>

@@ -8,7 +8,7 @@ Default trigger days: 3 → 3 → 2 → 3 → 2 → 5
 import json
 
 from communications.services.email_sender import GmailSMTPSender
-from communications.services.gmail_poller import GmailIMAPPoller
+from communications.services.gmail_api_poller import GmailAPIPoller
 from communications.services.sms_sender import TwilioSMSSender
 
 _DEFAULT_TRIGGER_DAYS = {
@@ -409,7 +409,7 @@ def poll_gmail_inbox() -> None:
     from communications.models import EmailMessage, MessageDirection
     from django.utils import timezone
 
-    poller = GmailIMAPPoller()
+    poller = GmailAPIPoller()
     replies = poller.poll_new_replies()
 
     for reply in replies:
